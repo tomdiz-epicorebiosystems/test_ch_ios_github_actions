@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Connected_Hydration_iOS
+
+  Created by Thomas DiZoglio on 6/3/24.
+  
+*/
+NSLocationWhenInUseUsageDescription = "Epicore CH は、サーバーにデータをアップロードするときにのみ GPS 位置情報を使用します。";
+NSBluetoothAlwaysUsageDescription = "Epicore CH は、水分補給デバイスと同期するために Bluetooth にアクセスする必要があります。";
+NSCameraUsageDescription = "Epicore CH は、QR コードまたはバーコードをスキャンするためにカメラにアクセスする必要があります。";

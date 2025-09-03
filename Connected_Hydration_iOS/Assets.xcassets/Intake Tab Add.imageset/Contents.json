@@ -1,0 +1,45 @@
+{
+  "images" : [
+    {
+      "filename" : "bttn_trackintake d + add-8.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "bttn_trackintake d + add@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "bttn_trackintake d + add@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "epicore_CH_jp_bttn_cancel_whitecircle.png",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "epicore_CH_jp_bttn_cancel_whitecircle@2x.png",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "epicore_CH_jp_bttn_cancel_whitecircle@3x.png",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true,
+    "template-rendering-intent" : "original"
+  }
+}

@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Connected_Hydration_iOS
+
+  Created by Thomas DiZoglio on 6/3/24.
+  
+*/
+NSLocationWhenInUseUsageDescription = "We use your GPS location for weather information to better meet your hydration needs.";
+NSBluetoothAlwaysUsageDescription = "Epicore CH requires access to Bluetooth to sync with our hydration device.";
+NSCameraUsageDescription = "Epicore CH needs access to your camera for scanning QR code or barcode.";

@@ -1,0 +1,105 @@
+{
+  "originHash" : "ffc89918c221bd7a270a6685c2b78dcd09c72660d6789debd63fbc1efb831cf0",
+  "pins" : [
+    {
+      "identity" : "blemanager",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EpicoreBiosystems/BLEManager",
+      "state" : {
+        "branch" : "main",
+        "revision" : "55a2b73e1dba463fb3c8eef68f242df9ab5ed041"
+      }
+    },
+    {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielgindi/Charts.git",
+      "state" : {
+        "revision" : "dd9c72e3d7e751e769971092a6bd72d39198ae63",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "5e886430238944c7200fc9e10dbf2d9550dba865"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
+      "state" : {
+        "revision" : "729e01bc9b9dab466ac85f21fb9ee2bc1c61b258",
+        "version" : "1.8.4"
+      }
+    },
+    {
+      "identity" : "dd-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Datadog/dd-sdk-ios.git",
+      "state" : {
+        "revision" : "868b6007db32b764998fcf847ab00c7daeed8c8b",
+        "version" : "2.26.0"
+      }
+    },
+    {
+      "identity" : "jwtdecode.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/auth0/JWTDecode.swift.git",
+      "state" : {
+        "revision" : "36a5ce735a61c4bc119593f43ce2c027b4ca7392",
+        "version" : "3.3.0"
+      }
+    },
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e0c7eebc5a4465a3c4680764f26b7a61f567cdaf"
+      }
+    },
+    {
+      "identity" : "opentelemetry-swift-packages",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DataDog/opentelemetry-swift-packages.git",
+      "state" : {
+        "revision" : "4a7295600d4ebb9525a23c11586c5fdb74ae8b7e",
+        "version" : "1.13.1"
+      }
+    },
+    {
+      "identity" : "plcrashreporter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/microsoft/plcrashreporter.git",
+      "state" : {
+        "revision" : "8c61e5e38e9f737dd68512ed1ea5ab081244ad65",
+        "version" : "1.12.0"
+      }
+    },
+    {
+      "identity" : "swiftui-mail-view",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/globulus/swiftui-mail-view",
+      "state" : {
+        "revision" : "dad1d289cb904d477f2fbabcca5ba82bfcfb2ea6",
+        "version" : "1.0.1"
+      }
+    },
+    {
+      "identity" : "trackable-scroll-view",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maxnatchanon/trackable-scroll-view",
+      "state" : {
+        "branch" : "master",
+        "revision" : "4b094575c2370c3341d0b377a27b46bda4f937f7"
+      }
+    }
+  ],
+  "version" : 3
+}

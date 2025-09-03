@@ -1,0 +1,45 @@
+{
+  "images" : [
+    {
+      "filename" : "bttn_trackintake ^-8 1.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "bttn_trackintake ^@2x 1.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "bttn_trackintake ^@3x 1.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "epicore_CH_jp_bttn_track_up_1.png",
+      "idiom" : "iphone",
+      "locale" : "ja",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "epicore_CH_jp_bttn_track_up_1@2x.png",
+      "idiom" : "iphone",
+      "locale" : "ja",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "epicore_CH_jp_bttn_track_up_1@3x.png",
+      "idiom" : "iphone",
+      "locale" : "ja",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true,
+    "template-rendering-intent" : "original"
+  }
+}

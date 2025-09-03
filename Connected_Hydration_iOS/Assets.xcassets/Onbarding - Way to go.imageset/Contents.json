@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Onboarding_Icon_way_to_go.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Onboarding_Icon_way_to_go@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Onboarding_Icon_way_to_go@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

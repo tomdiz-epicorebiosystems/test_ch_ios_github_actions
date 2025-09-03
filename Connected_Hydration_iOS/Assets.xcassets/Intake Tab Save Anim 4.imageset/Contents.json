@@ -1,0 +1,45 @@
+{
+  "images" : [
+    {
+      "filename" : "Bottom_bar_0_save copy 14.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Bottom_bar_0_save copy 14@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Bottom_bar_0_save copy 14@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "jp_bttn_save 4.png",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "jp_bttn_save 4@2x.png",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "jp_bttn_save 4@3x.png",
+      "idiom" : "universal",
+      "locale" : "ja",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true,
+    "template-rendering-intent" : "original"
+  }
+}
