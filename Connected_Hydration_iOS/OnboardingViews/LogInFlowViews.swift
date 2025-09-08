@@ -126,7 +126,6 @@ struct LogInEnterEmailAddressView: View {
                                 navigate(.push(.logInMainView))
                                 return
                             }
-                            test
 #endif
                             let keychain = Keychain(service: keychainAppBundleId)
                             let email = keychain["email_address"]
