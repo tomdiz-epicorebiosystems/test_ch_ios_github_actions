@@ -12,6 +12,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Configure Git for private repo
+        run: git config --global url."https://${{ secrets.CH_IOS_AUTOMATED }}@github.com/".insteadOf "https://github.com/"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set Default Scheme
