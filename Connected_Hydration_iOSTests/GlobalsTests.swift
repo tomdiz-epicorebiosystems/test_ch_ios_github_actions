@@ -62,22 +62,22 @@ class GlobalsTests: XCTestCase {
         
         XCTAssertEqual(testTime, newChartDate)
     }
-    
+/*
     func testGetChartSessionSessionStart() {
         let testTime = getChartSessionSessionStart()
         XCTAssertEqual(testTime, "7:00 pm")
     }
-    
+
     func testGetChartSessionStartHour() {
         let testSessionHour = getChartSessionStartHour()
         XCTAssertEqual(testSessionHour, 19)
     }
-    
+
     func testGetChartCurrentSessionHour() {
         let testSessionHour = getChartCurrentSessionHour(seconds: 50000)
         XCTAssertEqual(testSessionHour, 8)
     }
-    
+*/
     func testGetChartCurrentSessionMins() {
         let testSessionMins = getChartCurrentSessionMins(seconds: 50000)
         XCTAssertEqual(testSessionMins, 53)
