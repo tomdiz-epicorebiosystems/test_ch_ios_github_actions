@@ -88,36 +88,31 @@ struct ContentView: View {
                             selection == .today ? Label("TODAY", image: "Today Tab On") : Label("TODAY", image: "Today Tab Off")
                         }
                         .tag(Tab.today)
-                        .accessibility(identifier: "tabview_today")
-
+                    
                     HistoryView(tabNothing: $selection)
                         .tabItem {
                             selection == .history ? Label("HISTORY", image: "History Tab On") : Label("HISTORY", image: "History Tab Off")
                         }
                         .tag(Tab.history)
-                        .accessibility(identifier: "tabview_history")
 
                     IntakeTabView(tabSelection: $selection)
                         .tabItem {
                             Image("Intake Tab Normal")
                         }
                         .tag(Tab.intake)
-                        .accessibility(identifier: "tabview_intake")
-
+                    
                     InsightsView(tabNothing: $selection)
                         .tabItem {
                             selection == .insights ? Label("INSIGHTS", image: "Insights Tab On") : Label("INSIGHTS", image: "Insights Tab Off")
                         }
                         .tag(Tab.insights)
-                        .accessibility(identifier: "tabview_insights")
-
+                    
                     SettingsView(tabNothing: $selection)
                         .environmentObject(modelData)
                         .tabItem {
                             selection == .settings ? Label("SETTINGS", image: "Settings Tab On") : Label("SETTINGS", image: "Settings Tab Off")
                         }
                         .tag(Tab.settings)
-                        .accessibility(identifier: "tabview_settings")
 
                 }   // TabView end
                 .onAppear() {

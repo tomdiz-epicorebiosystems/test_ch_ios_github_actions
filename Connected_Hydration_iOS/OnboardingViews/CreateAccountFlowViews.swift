@@ -30,7 +30,6 @@ struct CreateAccountGetStartedView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 10)
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_createaccountgetstartedview_welcome")
 
             Text("To get started, gather the Connected Hydration materials that you received.")
                 .font(.custom("Oswald-Regular", size: 16))
@@ -39,14 +38,12 @@ struct CreateAccountGetStartedView: View {
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_createaccountgetstartedview_started")
 
             Text("You’ll also need:")
                 .font(.custom("Oswald-Regular", size: 16))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 30)
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_createaccountgetstartedview_need")
 
             HStack(spacing: 5){
                 VStack(alignment: .center, spacing: 10) {
@@ -54,15 +51,12 @@ struct CreateAccountGetStartedView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .accessibility(identifier: "image_createaccountgetstartedview_phone")
 
                     Text("SMART\nPHONE")
                         .font(.custom("Roboto-Regular", size: 14))
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(hex: generalCHAppColors.regularGrayStandardBackground))
-                        .accessibility(identifier: "text_createaccountgetstartedview_smart")
-
                 }
 
                 VStack(alignment: .center, spacing: 10) {
@@ -70,15 +64,12 @@ struct CreateAccountGetStartedView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .accessibility(identifier: "image_createaccountgetstartedview_internet")
 
                     Text("INTERNET\nCONNECTION")
                         .font(.custom("Roboto-Regular", size: 14))
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(hex: generalCHAppColors.regularGrayStandardBackground))
-                        .accessibility(identifier: "text_createaccountgetstartedview_internet")
-
                 }
 
                 VStack(alignment: .center, spacing: 10) {
@@ -86,15 +77,12 @@ struct CreateAccountGetStartedView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .accessibility(identifier: "image_createaccountgetstartedview_enterprise")
 
                     Text("ENTERPRISE /\nSITE ID")
                         .font(.custom("Roboto-Regular", size: 14))
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color(hex: generalCHAppColors.regularGrayStandardBackground))
-                        .accessibility(identifier: "text_createaccountgetstartedview_enterprise")
-
                 }
             }
             .padding(40)
@@ -108,16 +96,13 @@ struct CreateAccountGetStartedView: View {
                     if self.isTermsChecked == true {
                         Image("GetStarted - Checked")
                             .frame(width: 60, height: 60)
-                            .accessibility(identifier: "image_createaccountgetstartedview_checked")
-
                     }
                     else {
                         Image("GetStarted - UnChecked")
                             .frame(width: 60, height: 60)
-                            .accessibility(identifier: "image_createaccountgetstartedview_uncheck")
-
                     }
                 }
+                .accessibility(identifier: "checkbox_agree_to_terms")
                 .padding(.leading, 20)
 
                 VStack {
@@ -125,8 +110,7 @@ struct CreateAccountGetStartedView: View {
                         Text("I agree to Epicore Biosystems’ ")
                             .font(.custom("Roboto-Regular", size: 12))
                             .foregroundColor(Color.white)
-                            .accessibility(identifier: "text_createaccountgetstartedview_agree")
-
+                        
                         Button(action: {
                             self.isTermsPresent = true
                             logger.info("onBoarding", attributes: ["main": "Terms & Conditions - button pressed"])
@@ -135,9 +119,8 @@ struct CreateAccountGetStartedView: View {
                                 .underline()
                                 .font(.custom("Roboto-Regular", size: 12))
                                 .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                                .accessibility(identifier: "text_createaccountgetstartedview_terms")
-
                         }
+                        .accessibility(identifier: "button_terms_and_conditions")
 
                     }
                     .padding(.top, 20)
@@ -145,13 +128,11 @@ struct CreateAccountGetStartedView: View {
                     .uiKitFullPresent(isPresented: $isTermsPresent, content: { closeHandler in
                         EpicoreRequiredView(epicodeLegalView: .terms)
                     })
-                    .accessibility(identifier: "button_createaccountgetstartedview_terms")
-
+                    
                     HStack(spacing: 0) {
                         Text(" and acknowledge that the ")
                             .font(.custom("Roboto-Regular", size: 12))
                             .foregroundColor(Color.white)
-                            .accessibility(identifier: "text_createaccountgetstartedview_ack")
 
                         Button(action: {
                             self.isPrivacyPresent = true
@@ -161,19 +142,15 @@ struct CreateAccountGetStartedView: View {
                                 .underline()
                                 .font(.custom("Roboto-Regular", size: 12))
                                 .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                                .accessibility(identifier: "text_createaccountgetstartedview_privacy")
-
                         }
+                        .accessibility(identifier: "button_privacy_policy")
                         .uiKitFullPresent(isPresented: $isPrivacyPresent, content: { closeHandler in
                             EpicoreRequiredView(epicodeLegalView: .privacy)
                         })
-                        .accessibility(identifier: "button_createaccountgetstartedview_privacy")
 
                         Text(" applies.")
                             .font(.custom("Roboto-Regular", size: 12))
                             .foregroundColor(Color.white)
-                            .accessibility(identifier: "text_createaccountgetstartedview_applies")
-
                     }
                     .padding(.trailing, 30)
                 }
@@ -191,14 +168,12 @@ struct CreateAccountGetStartedView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(self.isTermsChecked ? Color(hex: chHydrationColors.waterFull) : Color.gray)
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                    .accessibility(identifier: "text_createaccountgetstartedview_started")
-
             }
+            .accessibility(identifier: "button_get_started")
             .disabled(self.isTermsChecked ? false : true)
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_createaccountgetstartedview_started")
-
+            
         }
         .trackRUMView(name: "CreateAccountGetStartedView")
         .onAppear() {
@@ -234,7 +209,8 @@ struct CreateAccountMainView: View {
                 Image("PairModule - Dots 1")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 10)
-                    .accessibility(identifier: "image_createaccountmainview_progress_1")
+                    .accessibility(identifier: "progress_dots_1")
+                    .id(200)
 
                 Text("Find your Enterprise / Site ID on the printed Onboarding Instructions sheet.")
                     .font(.custom("Oswald-Regular", size: 20))
@@ -243,7 +219,6 @@ struct CreateAccountMainView: View {
                     .foregroundColor(.white)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_createaccountmainview_find")
 
                 Image("GetStarted_enterprise")
                     .resizable()
@@ -251,8 +226,7 @@ struct CreateAccountMainView: View {
                     .frame(minHeight: 100, maxHeight: 200, alignment: .center)
                     .padding(.top, 5)
                     .padding(.bottom, 5)
-                    .accessibility(identifier: "image_createaccountmainview_getstarted")
-
+                
                 Button(action: {
                     self.isCodeScannerPresented = true
                 }) {
@@ -262,8 +236,6 @@ struct CreateAccountMainView: View {
                             .frame(width: 350, height: 40)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                            .accessibility(identifier: "text_createaccountmainview_qrcode_ja")
-
                     }
                     else {
                         Text("SCAN QR CODE \(Image(systemName: "qrcode.viewfinder"))")
@@ -271,23 +243,22 @@ struct CreateAccountMainView: View {
                             .frame(width: 200, height: 40)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                            .accessibility(identifier: "text_createaccountmainview_qrcode")
-
                     }
                 }
                 .trackRUMTapAction(name: "SCAN QR CODE")
+                .accessibility(identifier: "scan_qr_code")
+                .id(201)
                 .uiKitFullPresent(isPresented: $isCodeScannerPresented, content: { closeHandler in
                     QRCodeScannerView(isCodeScannerPresented: $isCodeScannerPresented, qrScanCode: $qrScanCode, scanErrorString: $scanErrorString, isEnterpriseIdScan: true)
                         .environmentObject(modelData)
                 })
-                .accessibility(identifier: "button_createaccountmainview_qrcode")
-
+                                    
                 Text("or enter code manually:")
+                    .id(202)
                     .font(.custom("Roboto-Regular", size: 20))
                     .foregroundColor(.white)
                     .padding(.bottom, -15)
                     .padding(.top, 10)
-                    .accessibility(identifier: "text_createaccountmainview_enter_manually")
 
                 TextField("", text: $enterpriseId)
                     .textFieldStyle(.roundedBorder)
@@ -299,7 +270,8 @@ struct CreateAccountMainView: View {
                     .autocapitalization(.allCharacters)
                     .autocorrectionDisabled(true)
                     .submitLabel(.done)
-                    .accessibility(identifier: "textfield_createaccountmainview_enterprise")
+                    .accessibility(identifier: "enterprise_id_textfield")
+                    .id(203)
 
                 if scanErrorString.isEmpty == false {
                     Text(scanErrorString)
@@ -308,6 +280,8 @@ struct CreateAccountMainView: View {
                         .foregroundColor(Color.red)
                         .padding(.top, 5)
                         .padding(.leading, 45)
+                        .accessibility(identifier: "error_scan_enterprise_id")
+                        .id(204)
                 }
                 
                 if self.modelData.networkAPIError == true {
@@ -325,8 +299,8 @@ struct CreateAccountMainView: View {
                             .onDisappear() {
                                 print("onAppear - self.modelData.networkAPIError")
                             }
-                            .accessibility(identifier: "text_createaccountmainview_servererror")
-
+                            .accessibility(identifier: "error_server_api_enterprise_id")
+                            .id(205)
                     }
                     else {
                         Text("Unknown server API issue")
@@ -338,8 +312,8 @@ struct CreateAccountMainView: View {
                                 showNetworkProgressView = false
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_createaccountmainview_unknown")
-
+                            .accessibility(identifier: "unknown_error_string")
+                            .id(206)
                     }
                 }
                 
@@ -375,14 +349,13 @@ struct CreateAccountMainView: View {
                         .frame(width: 180, height: 50)
                         .foregroundColor(enterpriseId.isEmpty ? Color.gray : Color(hex: generalCHAppColors.onboardingVeryDarkBackground))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_createaccountmainview_submit")
-
                 }
                 .trackRUMTapAction(name: "SUBMIT-enterpriseId")
+                .accessibility(identifier: "submit_enterprise_id_button")
+                .id(207)
                 .disabled(enterpriseId.isEmpty ? true : false)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_createaccountmainview_submit")
-
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .onAppear() {
@@ -439,8 +412,7 @@ struct CreateAccountMainTitleView: View {
         Text("ACCOUNT SETUP")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
-            .accessibility(identifier: "text_createaccountmaintitleview_accountsetup")
-
+        
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -463,7 +435,8 @@ struct CreateAccountConfirmEnterprise: View {
                 Image("PairModule - Dots 2")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 10)
-                    .accessibility(identifier: "image_createaccountconfirmenterprise_progress_2")
+                    .accessibility(identifier: "progress_dot_2")
+                    .id(208)
 
                 Text("Please confirm that this is the job site at which you are based:")
                     .font(.custom("Oswald-Regular", size: 20))
@@ -472,36 +445,35 @@ struct CreateAccountConfirmEnterprise: View {
                     .foregroundColor(.white)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_createaccountconfirmenterprise_confirm")
 
                 Spacer()
 
                 Image(systemName: "mappin.and.ellipse")
                     .font(.system(size: 48))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
-                    .accessibility(identifier: "image_createaccountconfirmenterprise_mappin")
 
                 Text(modelData.CH_EnterpriseName)
                     .font(.custom("Oswald-Regular", size: 32))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_createaccountconfirmenterprise_enterprisename")
+                    .accessibility(identifier: "enterprise_name")
+                    .id(209)
 
                 if modelData.CH_SiteName.isEmpty {
                     Text(modelData.onboardingEnterpriseSiteCode)
                         .font(.custom("Oswald-Regular", size: 28))
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountconfirmenterprise_enterprisesite")
-
+                        .accessibility(identifier: "site_name_empty")
+                        .id(210)
                 }
                 else {
                     Text(modelData.CH_SiteName)
                         .font(.custom("Oswald-Regular", size: 28))
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountconfirmenterprise_sitename")
-
+                        .accessibility(identifier: "site_name_found")
+                        .id(211)
                 }
 
                 Spacer()
@@ -514,11 +486,11 @@ struct CreateAccountConfirmEnterprise: View {
                         .frame(width: 200, height: 50)
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_createaccountconfirmenterprise_confirm")
                 }
                 .trackRUMTapAction(name: "CONFIRM-enterpriseId")
+                .accessibility(identifier: "comfirm_enterprise_id")
+                .id(212)
                 .padding(.bottom, 10)
-                .accessibility(identifier: "button_createaccountconfirmenterprise_confirm")
 
                 Button(action: {
                     self.isEnterpriseEditPresent.toggle()
@@ -528,16 +500,15 @@ struct CreateAccountConfirmEnterprise: View {
                         .font(.custom("Roboto-Regular", size: 14))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountconfirmenterprise_incorrect")
-
                 }
+                .accessibility(identifier: "button_change_enterprise_site")
+                .id(213)
                 .uiKitFullPresent(isPresented: $isEnterpriseEditPresent, content: { closeHandler in
                     EditEnterpriseSiteIdView(isEnterpriseEditPresent: $isEnterpriseEditPresent)
                         .environmentObject(modelData)
                 })
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_createaccountconfirmenterprise_incorrect")
 
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -570,42 +541,42 @@ struct CreateAccountEnterEmailAddress: View {
                 Image("PairModule - Dots 3")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 10)
-                    .accessibility(identifier: "image_createaccountenteremailaddress_progress_3")
+                    .accessibility(identifier: "progress_dots_3")
+                    .id(214)
 
                 Text("Enterprise code confirmed.")
                     .font(.custom("Oswald-Regular", size: 20))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(.white)
-                    .accessibility(identifier: "text_createaccountenteremailaddress_confirm")
 
                 Image(systemName: "mappin.and.ellipse")
                     .font(.system(size: 48))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .padding(.top, 10)
-                    .accessibility(identifier: "image_createaccountenteremailaddress_mappin")
 
                 Text(modelData.CH_EnterpriseName)
                     .font(.custom("Oswald-Regular", size: 32))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_createaccountenteremailaddress_enterprisename")
+                    .accessibility(identifier: "enterprise_name")
+                    .id(215)
 
                 if modelData.CH_SiteName.isEmpty {
                     Text(modelData.onboardingEnterpriseSiteCode)
                         .font(.custom("Oswald-Regular", size: 28))
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountenteremailaddress_sitecode")
-
+                        .accessibility(identifier: "onboarding_site_code")
+                        .id(216)
                 }
                 else {
                     Text(modelData.CH_SiteName)
                         .font(.custom("Oswald-Regular", size: 28))
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountenteremailaddress_sitename")
-
+                        .accessibility(identifier: "site_name")
+                        .id(217)
                 }
 
                 VStack(alignment: .leading, spacing: 0) {
@@ -613,14 +584,16 @@ struct CreateAccountEnterEmailAddress: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Oswald-Regular", size: 16))
                         .foregroundColor(Color.white)
-                        .accessibility(identifier: "text_createaccountenteremailaddress_enter")
-
+                    
                     TextField(signInEmailPlaceholder, text: $emailAddress)
+                        .accessibility(identifier: "sign_in_email")
+                        .id(218)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 50, alignment: .center)
                         .keyboardType(.emailAddress)
                         .autocorrectionDisabled(true)
                         .autocapitalization(.none)
+                        .accessibility(identifier: "textfield_email_address")
                         .onTapGesture {
                             if emailAddress == signInEmailPlaceholder {
                                 emailAddress = ""
@@ -628,8 +601,6 @@ struct CreateAccountEnterEmailAddress: View {
                             isValidEmail = true
                         }
                         .submitLabel(.done)
-                        .accessibility(identifier: "textfield_createaccountenteremailaddress_emailaddress")
-
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 40)
@@ -642,6 +613,8 @@ struct CreateAccountEnterEmailAddress: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .foregroundColor(Color.red)
                         .padding(.top, 5)
+                        .accessibility(identifier: "invalid_email_address")
+                        .id(219)
                 }
                 
                 if self.modelData.networkAPIError {
@@ -654,11 +627,13 @@ struct CreateAccountEnterEmailAddress: View {
                             .onAppear() {
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_createaccountenteremailaddress_servererror")
-
+                            .accessibility(identifier: "email_api_error")
+                            .id(220)
                     }
                     else {
                         Text("Unknown server API issue")
+                            .accessibility(identifier: "unknow_error_api")
+                            .id(221)
                             .font(.custom("Roboto-Regular", size: 14))
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(Color.red)
@@ -666,8 +641,6 @@ struct CreateAccountEnterEmailAddress: View {
                             .onAppear() {
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_createaccountenteremailaddress_unknown")
-
                     }
                 }
                 
@@ -676,12 +649,7 @@ struct CreateAccountEnterEmailAddress: View {
                 Button(action: {
                     // Need to do loginContext to see if user_exists
                     if isValidEmail(emailAddress) {
-#if targetEnvironment(simulator) && QA_TESTING
-                    if emailAddress == "qa_user@qatest.com" {
-                        navigate(.push(.createAccountCheckEmailView))
-                        return
-                    }
-#endif
+                        
                         let keychain = Keychain(service: keychainAppBundleId)
                         let email = keychain["email_address"]
                         let accessToken = keychain["access_token"]
@@ -752,13 +720,12 @@ struct CreateAccountEnterEmailAddress: View {
                         .frame(width: 180, height: 50)
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_createaccountenteremailaddress_continue")
-
                 }
                 .trackRUMTapAction(name: "CONTINUE-create-acct")
+                .accessibility(identifier: "continue_create_account")
+                .id(222)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_createaccountenteremailaddress_continue")
-
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)
@@ -817,7 +784,6 @@ struct CreateAccountCheckEmailView: View {
                 Text("ACCOUNT SETUP")
                     .font(.custom("Oswald-Regular", size: 20))
                     .foregroundColor(Color.white)
-                    .accessibility(identifier: "text_createaccountcheckemailview_accountsetup")
 
                 Text("Check your email inbox")
                     .font(.custom("Roboto-Medium", size: 20))
@@ -826,8 +792,7 @@ struct CreateAccountCheckEmailView: View {
                     .padding(.top, 10)
                     .padding(.bottom, 20)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_createaccountcheckemailview_inbox")
-
+                
                 Text("To complete your login, we’ve sent an email containing a one-time passcode to:")
                     .font(.custom("Oswald-Regular", size: 16))
                     .foregroundColor(.white)
@@ -836,8 +801,7 @@ struct CreateAccountCheckEmailView: View {
                     .padding(.bottom, 20)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_createaccountcheckemailview_complete")
-
+                
                 Text(modelData.userEmailAddress)
                     .font(.custom("Roboto-Regular", size: 20))
                     .foregroundColor(.white)
@@ -845,7 +809,8 @@ struct CreateAccountCheckEmailView: View {
                     .padding(.top, 10)
                     .padding(.bottom, 20)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_createaccountcheckemailview_emailaddress")
+                    .accessibility(identifier: "users_email_address")
+                    .id(223)
 
                 Button(action: {
                     navigate(.push(.logInNavToEmailView))
@@ -855,12 +820,11 @@ struct CreateAccountCheckEmailView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                        .accessibility(identifier: "text_createaccountcheckemailview_navigate")
-
                 }
+                .accessibility(identifier: "button_navigate_email")
+                .id(224)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 20)
-                .accessibility(identifier: "button_createaccountcheckemailview_navigate")
 
                 Button(action: {
                     navigate(.push(.createAccountEnterCodeView))
@@ -870,10 +834,10 @@ struct CreateAccountCheckEmailView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                        .accessibility(identifier: "text_createaccountcheckemailview_entercode")
                 }
+                .accessibility(identifier: "button_enter_verification_code")
+                .id(225)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .accessibility(identifier: "button_createaccountcheckemailview_entercode")
 
                 Spacer()
             }
@@ -944,7 +908,6 @@ struct CreateAccountEnterCodeView: View {
                 Text("ACCOUNT SETUP")
                     .font(.custom("Oswald-Regular", size: 20))
                     .foregroundColor(Color.white)
-                    .accessibility(identifier: "text_createaccountentercodeview_accountsetup")
 
                 Text("Enter verification code received by email:")
                     .font(.custom("Oswald-Regular", size: 18))
@@ -953,12 +916,13 @@ struct CreateAccountEnterCodeView: View {
                     .padding(.top, 20)
                     .padding(.bottom, 10)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_createaccountentercodeview_verification")
-
+                
                 TextField("", text: $verificationCode)
                     .onReceive(verificationCode.publisher.collect()) {
                         self.verificationCode = String($0.prefix(8))
                     }
+                    .accessibility(identifier: "textfield_verification_code")
+                    .id(226)
                     .font(Font.largeTitle.weight(.semibold))
                     .multilineTextAlignment(.center)
                     .padding(5)
@@ -968,34 +932,24 @@ struct CreateAccountEnterCodeView: View {
                     .frame(width: 200, height: 120)
                     .keyboardType(.numberPad)
                     .submitLabel(.done)
-                    .accessibility(identifier: "textfield_createaccountentercodeview_code")
 
                 Button(action: {
-#if targetEnvironment(simulator) && QA_TESTING
-                    if verificationCode == "1234" {
-                        modelData.networkManager.modelData = modelData
-                        modelData.onboardingStep = 2
-                        navigate(.unwind(.initialSetupOnboarding))
-                    }
-#else
                     modelData.networkManager.modelData = modelData
                     modelData.networkManager.AuthenticateWithCode(email: modelData.userEmailAddress, verificationCode: verificationCode)
                     
                     handlingNetworkAPI = true
                     showNetworkProgressView = true
-#endif
                 }) {
                     Text("SUBMIT")
                         .font(.custom("Oswald-Regular", size: 18))
                         .frame(width: 180, height: 50)
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_createaccountentercodeview_submit")
-
                 }
+                .accessibility(identifier: "button_submit")
+                .id(227)
                 .padding(.bottom, 20)
-                .accessibility(identifier: "button_createaccountentercodeview_submit")
-
+                
                 Spacer()
 
                 Button(action: {
@@ -1010,12 +964,11 @@ struct CreateAccountEnterCodeView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                        .accessibility(identifier: "text_createaccountentercodeview_call")
-
                 }
+                .accessibility(identifier: "epicore_phone")
+                .id(228)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_createaccountentercodeview_call")
 
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -1095,8 +1048,7 @@ struct CreateAccountUserExistsView: View {
                     .padding(.top, 10)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_createaccountuserexistsview_exists")
-
+                
                 HStack {
                     VStack(alignment: .center, spacing: 10) {
                         Text(modelData.onboardingEnterpriseName)
@@ -1107,7 +1059,8 @@ struct CreateAccountUserExistsView: View {
                             .onTapGesture {
                                 onboardingEnterpriseSelected = true
                             }
-                            .accessibility(identifier: "text_createaccountuserexistsview_enterprisename_1")
+                            .accessibility(identifier: "enterpise_name")
+                            .id(229)
 
                         Text(modelData.onboardingEnterpriseSiteCode)
                             .font(.custom("Roboto-Regular", size: 16))
@@ -1117,7 +1070,8 @@ struct CreateAccountUserExistsView: View {
                             .onTapGesture {
                                 onboardingEnterpriseSelected = true
                             }
-                            .accessibility(identifier: "text_createaccountuserexistsview_sitecode_1")
+                            .accessibility(identifier: "enterpise_onboarind_site_code")
+                            .id(230)
 
                         Button(action: {
                             onboardingEnterpriseSelected = true
@@ -1127,19 +1081,17 @@ struct CreateAccountUserExistsView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .scaleEffect(0.12)
-                                    .accessibility(identifier: "image_createaccountuserexistsview_checked_1")
-
                             }
                             else {
                                 Image("GetStarted - UnChecked")
                                     .resizable()
                                     .scaledToFit()
                                     .scaleEffect(0.12)
-                                    .accessibility(identifier: "image_createaccountuserexistsview_unchecked_1")
-
                             }
                         }
-                        
+                        .accessibility(identifier: "checkbox_onboarding")
+                        .id(231)
+
                     }
                     
                     VStack(alignment: .center, spacing: 10) {
@@ -1151,7 +1103,8 @@ struct CreateAccountUserExistsView: View {
                             .onTapGesture {
                                 onboardingEnterpriseSelected = false
                             }
-                            .accessibility(identifier: "text_createaccountuserexistsview_enterprisename_2")
+                            .accessibility(identifier: "enterpise_name")
+                            .id(232)
 
                         Text(modelData.enterpriseSiteCode)
                             .font(.custom("Roboto-Regular", size: 16))
@@ -1161,7 +1114,8 @@ struct CreateAccountUserExistsView: View {
                             .onTapGesture {
                                 onboardingEnterpriseSelected = false
                             }
-                            .accessibility(identifier: "text_createaccountuserexistsview_sitecode_2")
+                            .accessibility(identifier: "site_code")
+                            .id(233)
 
                         Button(action: {
                             onboardingEnterpriseSelected = false
@@ -1171,17 +1125,16 @@ struct CreateAccountUserExistsView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .scaleEffect(0.12)
-                                    .accessibility(identifier: "text_createaccountuserexistsview_unchecked_2")
                             }
                             else {
                                 Image("GetStarted - Checked")
                                     .resizable()
                                     .scaledToFit()
                                     .scaleEffect(0.12)
-                                    .accessibility(identifier: "text_createaccountuserexistsview_checked_2")
                             }
                         }
-
+                        .accessibility(identifier: "checkbox_onboarding")
+                        .id(234)
                     }
                 }
                 
@@ -1197,8 +1150,8 @@ struct CreateAccountUserExistsView: View {
                             .onAppear() {
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_createaccountuserexistsview_servererror")
-
+                            .accessibility(identifier: "server_api_error")
+                            .id(235)
                     }
                     else {
                         Text("Unknown server API issue")
@@ -1209,8 +1162,8 @@ struct CreateAccountUserExistsView: View {
                             .onAppear() {
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_createaccountuserexistsview_unknown")
-
+                            .accessibility(identifier: "unknown_error")
+                            .id(236)
                     }
                 }
                 
@@ -1244,13 +1197,12 @@ struct CreateAccountUserExistsView: View {
                     Text("OK")
                         .font(.custom("Oswald-Regular", size: 18))
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                        .accessibility(identifier: "text_createaccountuserexistsview_ok")
-
                 }
+                .accessibility(identifier: "confirm_information")
+                .id(237)
                 .frame(width: 280, height: 50)
                 .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_createaccountuserexistsview_ok")
 
                 if showNetworkProgressView == true {
                     NetworkUpdateUserInfoProgressView()
@@ -1293,35 +1245,34 @@ struct CreateAccountUserExistsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 10)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_createaccountuserexistsview_emailaddress")
+                    .accessibility(identifier: "user_email_address")
+                    .id(238)
 
                 Image(systemName: "mappin.and.ellipse")
                     .font(.system(size: 48))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .padding(.top, 10)
-                    .accessibility(identifier: "image_createaccountuserexistsview_mappin")
-
+                
                 Text(modelData.CH_EnterpriseName)
                     .font(.custom("Oswald-Regular", size: 32))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_createaccountuserexistsview_enterprisename")
+                    .accessibility(identifier: "enterprise_name")
+                    .id(239)
 
                 if modelData.CH_SiteName.isEmpty {
                     Text(modelData.enterpriseSiteCode)
                         .font(.custom("Oswald-Regular", size: 28))
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountuserexistsview_sitecode")
-
                 }
                 else {
                     Text(modelData.CH_SiteName)
                         .font(.custom("Oswald-Regular", size: 28))
                         .foregroundColor(Color(hex: chHydrationColors.waterFull))
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .accessibility(identifier: "text_createaccountuserexistsview_sitename")
-
+                        .accessibility(identifier: "user_site_name")
+                        .id(240)
                 }
                 
                 Text("You can choose to skip onboarding, but we’ll still need to confirm some key information and pair your module to your phone.")
@@ -1332,8 +1283,7 @@ struct CreateAccountUserExistsView: View {
                     .padding(.top, 10)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_createaccountuserexistsview_choose")
-
+                
                 Spacer()
                 
                 Button(action: {
@@ -1344,16 +1294,17 @@ struct CreateAccountUserExistsView: View {
                     Text("CONTINUE WITH ONBOARDING")
                         .font(.custom("Oswald-Regular", size: 18))
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                        .accessibility(identifier: "text_createaccountuserexistsview_continue")
-
                 }
+                .accessibility(identifier: "continue_onboarding")
+                .id(241)
                 .frame(width: 220, height: 50)
                 .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
                 .padding(.top, 10)
                 .padding(.bottom, 20)
-                .accessibility(identifier: "button_createaccountuserexistsview_continue")
-
+                
                 Text("I’ll skip Onboarding")
+                    .accessibility(identifier: "button_login")
+                    .id(242)
                     .font(.custom("Roboto-Regular", size: 14))
                     .underline()
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
@@ -1362,8 +1313,6 @@ struct CreateAccountUserExistsView: View {
                         modelData.onboardingStep = 6
                     }
                     .padding(.bottom, 20)
-                    .accessibility(identifier: "text_createaccountuserexistsview_skip")
-
             }
             .onAppear() {
                 modelData.networkManager.modelData = modelData
@@ -1395,15 +1344,13 @@ struct NetworkUpdateUserInfoProgressView: View {
                                 isRotating = 360.0
                             }
                     }
-                    .accessibility(identifier: "image_networkupdateUserinfoprogressView_spinner")
-
+                
                 Text("Updating user data...")
                     .font(.custom("Oswald-Regular", size: 24))
                     .padding(.top, 10)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(Color(UIColor.white))
-                    .accessibility(identifier: "text_networkupdateUserinfoprogressView_updating")
-
+                
                 Spacer()
             }
         }
@@ -1422,8 +1369,7 @@ struct CreateShowAccountText: View {
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
             .padding(.top, 20)
-            .accessibility(identifier: "text_createshowaccounttext_accountsetup")
-
+        
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -1439,7 +1385,6 @@ struct CreateShowAccountText: View {
                 .padding(.top, 40)
                 .padding(.bottom, 20)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_createshowaccounttext_success")
         }
     }
 }

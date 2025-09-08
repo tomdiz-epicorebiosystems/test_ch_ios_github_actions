@@ -32,12 +32,8 @@ struct Step4PatchApplicationApplyView: View {
                         .frame(width: 180, height: 50)
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_step4patchapplicationapplyview_continue")
-
                 }
                 .padding(.bottom, 20)
-                .accessibility(identifier: "button_step4patchapplicationapplyview_continue")
-
             }
         }
         .trackRUMView(name: "Step4PatchApplicationApplyView")
@@ -51,15 +47,12 @@ struct PatchApplicationShareInfo3View: View {
         
         HStack {
             Image("PatchApplication - Apply 1")
-                .accessibility(identifier: "image_patchapplicationshareinfo3view_apply")
-
+            
             Text("Press module firmly onto flat part of the upper arm (about 2 finger width from elbow).")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(Color.white)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
-                .accessibility(identifier: "text_patchapplicationshareinfo3view_press")
-
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .padding(.leading, 20)
@@ -71,11 +64,8 @@ struct PatchApplicationShareInfo3View: View {
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_patchapplicationshareinfo3view_smooth")
-
+            
             Image("PatchApplication - careful")
-                .accessibility(identifier: "image_patchapplicationshareinfo3view_careful")
-
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .padding(.leading, 20)
@@ -91,7 +81,5 @@ struct PatchApplicationShareInfo3View: View {
             .padding(.trailing, 20)
             .padding(.top, 10)
             .padding(.bottom, 10)
-            .accessibility(identifier: "text_patchapplicationshareinfo3view_careful")
-
     }
 }

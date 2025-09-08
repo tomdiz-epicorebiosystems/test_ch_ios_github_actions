@@ -22,8 +22,7 @@ struct Step3PairModuleMainView: View {
             Text("PAIR MODULE")
                 .font(.custom("Oswald-Regular", size: 20))
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_step3pairmodulemainview_pairmodule")
-
+            
             Rectangle()
                 .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
                 .frame(height: 1.0)
@@ -32,8 +31,7 @@ struct Step3PairModuleMainView: View {
             Image("PairModule - Dots 1")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 10)
-                .accessibility(identifier: "image_step3pairmodulemainview_progress_3")
-
+            
             PairModuleShareInfo1View()
             
             Spacer()
@@ -56,12 +54,9 @@ struct Step3PairModuleMainView: View {
                     .frame(width: languageCode == "ja" ? 300 : 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                    .accessibility(identifier: "text_step3pairmodulemainview_mymodule")
-
             }
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_step3pairmodulemainview_mymodule")
-
+            
         }
         .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)
             .edgesIgnoringSafeArea(.all))
@@ -99,7 +94,6 @@ struct PairModuleShareInfo1View: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 10)
-            .accessibility(identifier: "text_pairmoduleshareinfo1view_press")
 
         Text("A light will flash on startup, then blink green every 10 sec.")
             .font(.custom("Roboto-Regular", size: 16))
@@ -109,11 +103,8 @@ struct PairModuleShareInfo1View: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.bottom, 40)
-            .accessibility(identifier: "text_pairmoduleshareinfo1view_flash")
-
+        
         Image("Pair Module - On-Off")
             .frame(maxWidth: .infinity, alignment: .center)
-            .accessibility(identifier: "image_pairmoduleshareinfo1view_pair")
-
     }
 }

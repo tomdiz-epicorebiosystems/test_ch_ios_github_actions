@@ -30,13 +30,11 @@ struct LogInEnterEmailAddressView: View {
                         .font(.custom("Oswald-Regular", size: 20))
                         .frame(maxWidth: .infinity, alignment: .center)
                         .foregroundColor(Color.white)
-                        .accessibility(identifier: "text_loginenteremailaddressview_account_login")
 
                     Image("SignIn-Hard Hat")
                         .resizable()
                         .scaledToFit()
                         .frame(width: geo.size.width)
-                        .accessibility(identifier: "image_loginenteremailaddressview_hard_hat")
 
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Welcome Back!")
@@ -44,13 +42,11 @@ struct LogInEnterEmailAddressView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.white)
                             .padding(.bottom, 10)
-                            .accessibility(identifier: "text_loginenteremailaddressview_welcome")
 
                         Text("Enter your email address:")
                             .font(.custom("Roboto-Medium", size: 18))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(Color.white)
-                            .accessibility(identifier: "text_loginenteremailaddressview_enter_email")
                         
                         TextField(signInEmailPlaceholder, text: $emailAddress)
                             .textFieldStyle(.roundedBorder)
@@ -58,7 +54,7 @@ struct LogInEnterEmailAddressView: View {
                             .keyboardType(.emailAddress)
                             .autocorrectionDisabled(true)
                             .autocapitalization(.none)
-                            .accessibility(identifier: "textfield_loginenteremailaddressview_email")
+                            .accessibility(identifier: "textfield_email_address")
                             .onTapGesture {
                                 if emailAddress == signInEmailPlaceholder {
                                     emailAddress = ""
@@ -80,7 +76,6 @@ struct LogInEnterEmailAddressView: View {
                             .onAppear() {
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_loginenteremailaddressview_not_recognized")
                     }
 
                     if isValidEmail == false && emailAddress.isEmpty == false {
@@ -89,7 +84,6 @@ struct LogInEnterEmailAddressView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(Color.red)
                             .padding(.top, 5)
-                            .accessibility(identifier: "text_loginenteremailaddressview_email_invalid")
                     }
                     
                     if self.modelData.networkAPIError {
@@ -102,7 +96,6 @@ struct LogInEnterEmailAddressView: View {
                                 .onAppear() {
                                     handlingNetworkAPI = false
                                 }
-                                .accessibility(identifier: "text_loginenteremailaddressview_unknown_1")
                         }
                         else {
                             Text("Unknown server API issue")
@@ -113,7 +106,6 @@ struct LogInEnterEmailAddressView: View {
                                 .onAppear() {
                                     handlingNetworkAPI = false
                                 }
-                                .accessibility(identifier: "text_loginenteremailaddressview_unknown_2")
                         }
                     }
                     
@@ -121,12 +113,7 @@ struct LogInEnterEmailAddressView: View {
 
                     Button(action: {
                         if isValidEmail(emailAddress) {
-#if targetEnvironment(simulator) && QA_TESTING
-                            if emailAddress == "qa_user@qatest.com" {
-                                navigate(.push(.logInMainView))
-                                return
-                            }
-#endif
+
                             let keychain = Keychain(service: keychainAppBundleId)
                             let email = keychain["email_address"]
                             let accessToken = keychain["access_token"]
@@ -199,7 +186,6 @@ struct LogInEnterEmailAddressView: View {
                                 .frame(width: 180, height: 50)
                                 .foregroundColor(emailAddress.isEmpty ? Color.gray : Color(hex: generalCHAppColors.onboardingVeryDarkBackground))
                                 .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                                .accessibility(identifier: "text_loginenteremailaddressview_button_tryagain")
                         }
                         else {
                             Text("CONTINUE")
@@ -207,13 +193,12 @@ struct LogInEnterEmailAddressView: View {
                                 .frame(width: 180, height: 50)
                                 .foregroundColor(emailAddress.isEmpty ? Color.gray : Color(hex: chHydrationColors.waterFull))
                                 .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                                .accessibility(identifier: "text_loginenteremailaddressview_button_continue")
                         }
                     }
                     .trackRUMTapAction(name: "continue_email_address")
+                    .accessibility(identifier: "button_continue_enter_email")
                     .disabled(emailAddress.isEmpty ? true : false)
                     .padding(.bottom, 40)
-                    .accessibility(identifier: "button_loginenteremailaddressview_continue")
 
                     if self.modelData.showNoAccountFound == true {
                         VStack {
@@ -227,7 +212,6 @@ struct LogInEnterEmailAddressView: View {
                                     self.modelData.showNoAccountFound = false
                                     navigate(.unwind(.clearNavPath))
                                 }
-                                .accessibility(identifier: "text_loginenteremailaddressview_create")
 
                             Text("(Requires Onboarding)")
                                 .accessibility(identifier: "button_login")
@@ -238,7 +222,6 @@ struct LogInEnterEmailAddressView: View {
                                     self.modelData.showNoAccountFound = false
                                     navigate(.unwind(.clearNavPath))
                                 }
-                                .accessibility(identifier: "button_loginenteremailaddressview_requires")
                         }
                     }
                     
@@ -293,7 +276,6 @@ struct LogInCheckEmailView: View {
                 Text("ACCOUNT LOGIN")
                     .font(.custom("Oswald-Regular", size: 20))
                     .foregroundColor(Color.white)
-                    .accessibility(identifier: "text_logincheckemailview_account_login")
 
                 if modelData.userExists == 1 {
                     Text("You already have an account.")
@@ -303,7 +285,6 @@ struct LogInCheckEmailView: View {
                         .padding(.top, 10)
                         .padding(.bottom, 20)
                         .padding(.leading, 20)
-                        .accessibility(identifier: "text_logincheckemailview_account_already")
                 }
                 else{
                     Text("Check your email inbox")
@@ -313,7 +294,6 @@ struct LogInCheckEmailView: View {
                         .padding(.top, 10)
                         .padding(.bottom, 20)
                         .padding(.leading, 20)
-                        .accessibility(identifier: "text_logincheckemailview_account_check_inbox")
                 }
                 
                 Text("To complete your login, we’ve sent an email containing a one-time passcode to:")
@@ -324,8 +304,7 @@ struct LogInCheckEmailView: View {
                     .padding(.bottom, 20)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_logincheckemailview_complete_login")
-
+                
                 Text(modelData.userEmailAddress)
                     .font(.custom("Roboto-Regular", size: 20))
                     .foregroundColor(.white)
@@ -333,8 +312,7 @@ struct LogInCheckEmailView: View {
                     .padding(.top, 10)
                     .padding(.bottom, 20)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_logincheckemailview_user_email")
-
+                
                 Button(action: {
                     navigate(.push(.logInNavToEmailView))
                     logger.info("onBoarding", attributes: ["Login": "How do I navigate to my email?"])
@@ -343,11 +321,10 @@ struct LogInCheckEmailView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                        .accessibility(identifier: "text_logincheckemailview_how_navigate")
                 }
+                .accessibility(identifier: "button_navigate_email")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 20)
-                .accessibility(identifier: "button_logincheckemailview_how_navigate")
 
                 Button(action: {
                     navigate(.push(.logInEnterCodeView))
@@ -357,11 +334,10 @@ struct LogInCheckEmailView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                        .accessibility(identifier: "text_logincheckemailview_enter_code")
                 }
+                .accessibility(identifier: "button_enter_verification_code")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_logincheckemailview_enter_code")
 
                 Spacer()
             }
@@ -433,7 +409,6 @@ struct LogInEnterCodeView: View {
                 Text("ACCOUNT LOGIN")
                     .font(.custom("Oswald-Regular", size: 20))
                     .foregroundColor(Color.white)
-                    .accessibility(identifier: "text_loginentercodeview_account_login")
 
                 Text("Enter verification code received by email:")
                     .font(.custom("Oswald-Regular", size: 18))
@@ -442,12 +417,12 @@ struct LogInEnterCodeView: View {
                     .padding(.top, 20)
                     .padding(.bottom, 10)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_loginentercodeview_enter_code")
-
+                
                 TextField("", text: $verificationCode)
                     .onReceive(verificationCode.publisher.collect()) {
                         self.verificationCode = String($0.prefix(8))
                     }
+                    .accessibility(identifier: "textfield_verification_code")
                     .font(Font.largeTitle.weight(.semibold))
                     .multilineTextAlignment(.center)
                     .padding(5)
@@ -457,32 +432,23 @@ struct LogInEnterCodeView: View {
                     .frame(width: 200, height: 120)
                     .keyboardType(.numberPad)
                     .submitLabel(.done)
-                    .accessibility(identifier: "textfield_loginentercodeview_code")
 
                 Button(action: {
-#if targetEnvironment(simulator) && QA_TESTING
-                    if verificationCode == "1234" {
-                        modelData.networkManager.modelData = modelData
-                        navigate(.push(.logInAccountCreatedView))
-                    }
-#else
                     modelData.networkManager.modelData = modelData
                     modelData.networkManager.AuthenticateWithCode(email: modelData.userEmailAddress, verificationCode: verificationCode)
                     
                     handlingNetworkAPI = true
                     showNetworkProgressView = true
-#endif
                 }) {
                     Text("SUBMIT")
                         .font(.custom("Oswald-Regular", size: 18))
                         .frame(width: 180, height: 50)
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_loginentercodeview_button_submit")
                 }
+                .accessibility(identifier: "button_submit")
                 .padding(.bottom, 20)
-                .accessibility(identifier: "button_loginentercodeview_button_submit")
-
+                
                 Spacer()
 
                 Button(action: {
@@ -497,11 +463,9 @@ struct LogInEnterCodeView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                        .accessibility(identifier: "text_loginentercodeview_button_call")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_loginentercodeview_call")
 
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -567,7 +531,6 @@ struct LogInNavToEmailView: View {
             Text("ACCOUNT LOGIN")
                 .font(.custom("Oswald-Regular", size: 20))
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_loginnavtoemailview_account_login")
 
             Text("If you use the **iPhone Mail App** on this phone, you can tap the button below:")
                 .font(.custom("Roboto-Regular", size: 20))
@@ -576,7 +539,6 @@ struct LogInNavToEmailView: View {
                 .padding(.top, 10)
                 .padding(.bottom, 20)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginnavtoemailview_mail_info")
 
             Button(action: {
                 let mailURL = URL(string: "message://")!
@@ -586,16 +548,13 @@ struct LogInNavToEmailView: View {
             }) {
                 HStack {
                     Image("SignUp - Mail Icon")
-                        .accessibility(identifier: "image_loginnavtoemailview_icon")
                     Text("Take me to iPhone’s Mail App")
                         .font(.custom("Oswald-Regular", size: 18))
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                        .accessibility(identifier: "text_loginnavtoemailview_takeme")
                 }
             }
             .frame(width: 280, height: 50)
             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-            .accessibility(identifier: "button_loginnavtoemailview_mail_signup")
 
             LogInNavToEmailInstructionsView()
 
@@ -608,11 +567,9 @@ struct LogInNavToEmailView: View {
                     .underline()
                     .font(.custom("Roboto-Regular", size: 16))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                    .accessibility(identifier: "text_loginnavtoemailview_trouble")
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_loginnavtoemailview_trouble")
 
         }
         .trackRUMView(name: "LogInNavToEmailView")
@@ -635,7 +592,6 @@ struct LogInNavToEmailInstructionsView: View {
             .padding(.top, 20)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_loginnavtoemailinstructionsview_check_email")
 
         Text("1. Switch to the app you use to check email")
             .font(.custom("Roboto-Regular", size: 18))
@@ -643,7 +599,6 @@ struct LogInNavToEmailInstructionsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_loginnavtoemailinstructionsview_step_1")
 
         Text("2. Look for an email from Epicore Biosystems")
             .font(.custom("Roboto-Regular", size: 18))
@@ -651,7 +606,6 @@ struct LogInNavToEmailInstructionsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_loginnavtoemailinstructionsview_step_2")
 
         Text("3. Follow instructions in the email")
             .font(.custom("Roboto-Regular", size: 18))
@@ -659,7 +613,6 @@ struct LogInNavToEmailInstructionsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_loginnavtoemailinstructionsview_step_3")
     }
 }
 
@@ -683,7 +636,6 @@ struct LogInVerificationFailedView: View {
                 .padding(.trailing, 20)
                 .padding(.bottom, 20)
                 .padding(.top, 20)
-                .accessibility(identifier: "text_loginverificationfailedview_check")
 
             Button(action: {
                 self.modelData.networkSendCodeAPIError = 0
@@ -692,12 +644,11 @@ struct LogInVerificationFailedView: View {
                 Text("ENTER CODE MANUALLY")
                     .font(.custom("Oswald-Regular", size: 18))
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                    .accessibility(identifier: "text_loginverificationfailedview_enter_code")
             }
+            .accessibility(identifier: "button_enter_code_manually")
             .frame(width: 280, height: 50)
             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_loginverificationfailedview_enter_code")
 
             Text("Request a new email, containing a new verification link / code:")
                 .font(.custom("Roboto-Regular", size: 18))
@@ -707,7 +658,6 @@ struct LogInVerificationFailedView: View {
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 .padding(.bottom, 20)
-                .accessibility(identifier: "text_loginverificationfailedview_request")
 
             Button(action: {
                 self.modelData.networkSendCodeAPIError = 0
@@ -717,12 +667,11 @@ struct LogInVerificationFailedView: View {
                 Text("RESEND EMAIL")
                     .font(.custom("Oswald-Regular", size: 18))
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                    .accessibility(identifier: "text_loginverificationfailedview_resend")
             }
+            .accessibility(identifier: "button_resend_email")
             .frame(width: 280, height: 50)
             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
             .padding(.bottom, 20)
-            .accessibility(identifier: "button_loginverificationfailedview_resend")
 
             Spacer()
 
@@ -740,12 +689,9 @@ struct LogInVerificationFailedView: View {
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_loginverificationfailedview_call")
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_loginverificationfailedview_call")
-
         }
         .trackRUMView(name: "LogInNavToEmailInstructionsView")
         .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)
@@ -758,8 +704,7 @@ struct LogInTopVerificationFailedAccount: View {
         Text("ACCOUNT LOGIN")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
-            .accessibility(identifier: "text_loginTopverificationfailedaccount_account_login")
-
+        
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -772,7 +717,6 @@ struct LogInTopVerificationFailedAccount: View {
             .padding(.top, 40)
             .padding(.bottom, 20)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_loginTopverificationfailedaccount_failed")
 
     }
 }
@@ -794,7 +738,6 @@ struct LogInAccountCreatedView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 10)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginaccountcreatedview_emailaddress")
 
             Text("Next, we’ll confirm key information and have you pair your module to your phone.")
                 .font(.custom("Roboto-Regular", size: 18))
@@ -803,7 +746,6 @@ struct LogInAccountCreatedView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 10)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginaccountcreatedview_next")
 
             Text("Please confirm that your site information is still current:")
                 .font(.custom("Roboto-Regular", size: 18))
@@ -812,33 +754,28 @@ struct LogInAccountCreatedView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 20)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginaccountcreatedview_please")
 
             Image(systemName: "mappin.and.ellipse")
                 .font(.system(size: 48))
                 .foregroundColor(Color(hex: chHydrationColors.waterFull))
                 .padding(.top, 10)
-                .accessibility(identifier: "image_loginaccountcreatedview_mappin")
 
             Text(modelData.CH_EnterpriseName)
                 .font(.custom("Oswald-Regular", size: 32))
                 .foregroundColor(Color(hex: chHydrationColors.waterFull))
                 .frame(maxWidth: .infinity, alignment: .center)
-                .accessibility(identifier: "text_loginaccountcreatedview_enterprise_name")
 
             if modelData.CH_SiteName.isEmpty {
                 Text(modelData.enterpriseSiteCode)
                     .font(.custom("Oswald-Regular", size: 28))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_loginaccountcreatedview_site_name_empty")
             }
             else {
                 Text(modelData.CH_SiteName)
                     .font(.custom("Oswald-Regular", size: 28))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_loginaccountcreatedview_site_name")
             }
 
             Spacer()
@@ -849,12 +786,11 @@ struct LogInAccountCreatedView: View {
                 Text("THIS IS CORRECT")
                     .font(.custom("Oswald-Regular", size: 18))
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                    .accessibility(identifier: "text_loginaccountcreatedview_correct")
             }
+            .accessibility(identifier: "button_ths_is_correct")
             .frame(width: 280, height: 50)
             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
             .padding(.bottom, 20)
-            .accessibility(identifier: "button_loginaccountcreatedview_correct")
 
             Button(action: {
                 self.isEnterpriseEditPresent.toggle()
@@ -865,15 +801,14 @@ struct LogInAccountCreatedView: View {
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.leading, 20)
-                    .accessibility(identifier: "text_loginaccountcreatedview_change")
             }
+            .accessibility(identifier: "button_change_enterprise_site")
             .uiKitFullPresent(isPresented: $isEnterpriseEditPresent, content: { closeHandler in
                 EditEnterpriseSiteIdView(isEnterpriseEditPresent: $isEnterpriseEditPresent)
                     .environmentObject(modelData)
             })
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 60)
-            .accessibility(identifier: "button_loginaccountcreatedview_change")
 
             Spacer()
             
@@ -895,7 +830,6 @@ struct LogInCreateAccountText: View {
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
             .padding(.bottom, 40)
-            .accessibility(identifier: "text_logincreateaccounttext_accountlogin")
 
         Text("You’ve successfully logged in as:")
             .font(.custom("Roboto-Bold", size: 18))
@@ -903,8 +837,6 @@ struct LogInCreateAccountText: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logincreateaccounttext_success")
-
     }
 }
 
@@ -919,8 +851,7 @@ struct LogInTroubleshootingEmailView: View {
             Text("TROUBLESHOOTING STEPS")
                 .font(.custom("Oswald-Regular", size: 20))
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_logintroubleshootingemailview_troubleshooting")
-
+            
             LogInTroubleshootingInstructionsView()
 
             Spacer()
@@ -934,10 +865,9 @@ struct LogInTroubleshootingEmailView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                    .accessibility(identifier: "text_logintroubleshootingemailview_resend")
             }
+            .accessibility(identifier: "button_resend_email")
             .padding(.bottom, 20)
-            .accessibility(identifier: "button_logintroubleshootingemailview_resend")
 
             Button(action: {
                 guard let number = URL(string: "tel://+1-617-397-3756") else { return }
@@ -951,11 +881,9 @@ struct LogInTroubleshootingEmailView: View {
                     .underline()
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
-                    .accessibility(identifier: "text_logintroubleshootingemailview_call")
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_logintroubleshootingemailview_call")
 
         }
         .trackRUMView(name: "LogInTroubleshootingEmailView")
@@ -977,49 +905,42 @@ struct LogInTroubleshootingInstructionsView: View {
             .padding(.top, 10)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_not_received")
 
         Text("• It may take 5 minutes for email to arrive")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_1")
 
         Text("• Check Spam or Junk folders")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_2")
 
         Text("• Ensure you’re checking inbox for ")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_3")
 
         Text(modelData.userEmailAddress)
             .font(.custom("Roboto-Bold", size: 18))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 30)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_emailaddress")
 
         Text("• Check network connection")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_4")
 
         Text("• Request a new email (below)")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_5")
 
         Text("Link / Verification Code Not Working:")
             .font(.custom("Roboto-Regular", size: 20))
@@ -1028,7 +949,6 @@ struct LogInTroubleshootingInstructionsView: View {
             .padding(.top, 10)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_link")
 
         Text("• Link / verification code may have expired. Request a new email (below)")
             .font(.custom("Roboto-Regular", size: 18))
@@ -1036,7 +956,6 @@ struct LogInTroubleshootingInstructionsView: View {
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_link_1")
 
         Text("• If manually entered: double-check verification code for typos")
             .font(.custom("Roboto-Regular", size: 18))
@@ -1044,8 +963,6 @@ struct LogInTroubleshootingInstructionsView: View {
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_logintroubleshootinginstructionsView_link_2")
-
     }
 }
 
@@ -1073,7 +990,6 @@ struct LogInPhysioloyInfoView: View {
                     .font(.custom("Oswald-Regular", size: 20))
                     .foregroundColor(Color.white)
                     .padding(.top, 20)
-                    .accessibility(identifier: "text_loginphysioloyinfoview_account_login")
 
                 Text("This information helps tailor a hydration recommendation specific to you. It is not shared.")
                     .font(.custom("Roboto-Regular", size: 16))
@@ -1085,8 +1001,7 @@ struct LogInPhysioloyInfoView: View {
                     .padding(.bottom, 20)
                     .padding(.leading, 10)
                     .padding(.trailing, 10)
-                    .accessibility(identifier: "text_loginphysioloyinfoview_shared")
-
+                
                 Text("Please comfirm that the information is correct:")
                     .font(.custom("Roboto-Bold", size: 16))
                     .foregroundColor(.white)
@@ -1097,8 +1012,7 @@ struct LogInPhysioloyInfoView: View {
                     .padding(.bottom, 20)
                     .padding(.leading, 10)
                     .padding(.trailing, 10)
-                    .accessibility(identifier: "text_loginphysioloyinfoview_correct")
-
+                
                 if self.modelData.networkSendCodeAPIError == 1 {
                     Text("Unable to update user data on server.")
                         .font(.custom("Roboto-Regular", size: 14))
@@ -1112,8 +1026,6 @@ struct LogInPhysioloyInfoView: View {
                             self.modelData.networkSendCodeAPIError = 0
                             showNetworkProgressView = false
                         }
-                        .accessibility(identifier: "text_loginphysioloyinfoview_server")
-
                 }
                 else {
                     Text("")
@@ -1164,8 +1076,8 @@ struct LogInPhysioloyInfoView: View {
                         .frame(width: 180, height: 50)
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_loginphysioloyinfoview_continue")
                 }
+                .accessibility(identifier: "button_continue")
                 .padding(.bottom, 40)
                 .alert(isPresented: $showPhysiologyConfirmAlert) {
                     Alert(
@@ -1206,7 +1118,6 @@ struct LogInPhysioloyInfoView: View {
                         })
                     )
                 }
-                .accessibility(identifier: "button_loginphysioloyinfoview_continue")
 
                 if showNetworkProgressView == true {
                     NetworkGetUserInfoProgressView()
@@ -1259,8 +1170,7 @@ struct LogInUserExistsView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 10)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginuserexistsview_emailaddress")
-
+            
             Text("Next, we’ll confirm key information and have you pair your module to your phone.")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
@@ -1268,7 +1178,6 @@ struct LogInUserExistsView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 20)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginuserexistsview_pair")
 
             Text("Please confirm that your site information is still current:")
                 .font(.custom("Roboto-Regular", size: 18))
@@ -1277,33 +1186,28 @@ struct LogInUserExistsView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.top, 20)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_loginuserexistsview_confirm")
 
             Image(systemName: "mappin.and.ellipse")
                 .font(.system(size: 48))
                 .foregroundColor(Color(hex: chHydrationColors.waterFull))
                 .padding(.top, 10)
-                .accessibility(identifier: "image_loginuserexistsview_mappin")
 
             Text(modelData.CH_EnterpriseName)
                 .font(.custom("Oswald-Regular", size: 32))
                 .foregroundColor(Color(hex: chHydrationColors.waterFull))
                 .frame(maxWidth: .infinity, alignment: .center)
-                .accessibility(identifier: "text_loginuserexistsview_enterprisename")
 
             if modelData.CH_SiteName.isEmpty {
                 Text(modelData.jwtEnterpriseID + "-" + modelData.jwtSiteID)
                     .font(.custom("Oswald-Regular", size: 28))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_loginuserexistsview_jwt_info")
             }
             else {
                 Text(modelData.CH_SiteName)
                     .font(.custom("Oswald-Regular", size: 28))
                     .foregroundColor(Color(hex: chHydrationColors.waterFull))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_loginuserexistsview_sitename")
             }
 
             Button(action: {
@@ -1314,7 +1218,6 @@ struct LogInUserExistsView: View {
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_loginuserexistsview_change")
             }
             .uiKitFullPresent(isPresented: $isEnterpriseEditPresent, content: { closeHandler in
                 EditEnterpriseSiteIdView(isEnterpriseEditPresent: $isEnterpriseEditPresent)
@@ -1322,8 +1225,7 @@ struct LogInUserExistsView: View {
             })
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_loginuserexistsview_change")
-
+            
             Spacer()
             
             Button(action: {
@@ -1333,13 +1235,11 @@ struct LogInUserExistsView: View {
                 Text("THIS IS CORRECT")
                     .font(.custom("Oswald-Regular", size: 18))
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
-                    .accessibility(identifier: "text_loginuserexistsview_correct")
             }
+            .accessibility(identifier: "confirm_information")
             .frame(width: 280, height: 50)
             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
             .padding(.bottom, 60)
-            .accessibility(identifier: "button_loginuserexistsview_correct")
-
         }
         .onAppear() {
             modelData.networkManager.GetUserInfo()
@@ -1355,8 +1255,7 @@ struct LogInShowAccountText: View {
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
             .padding(.top, 20)
-            .accessibility(identifier: "text_loginshowaccounttext_account_login")
-
+        
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -1371,8 +1270,6 @@ struct LogInShowAccountText: View {
             .padding(.top, 40)
             .padding(.bottom, 20)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_loginshowaccounttext_success")
-
     }
 }
 
@@ -1401,7 +1298,6 @@ struct LogInMainView: View {
                     .multilineTextAlignment(.center)
                     .font(.custom("Roboto-Regular", size: 20))
                     .foregroundColor(.white)
-                    .accessibility(identifier: "text_loginmainview_find")
 
                 Image("GetStarted_enterprise")
                     .resizable()
@@ -1409,8 +1305,7 @@ struct LogInMainView: View {
                     .frame(minHeight: 100, maxHeight: 200, alignment: .center)
                     .padding(.top, 5)
                     .padding(.bottom, 5)
-                    .accessibility(identifier: "image_loginmainview_started")
-
+                
                 Button(action: {
                     self.isCodeScannerPresented = true
                 }) {
@@ -1420,8 +1315,6 @@ struct LogInMainView: View {
                             .frame(width: 350, height: 40)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                            .accessibility(identifier: "text_loginmainview_qrcode_ja")
-
                     }
                     else {
                         Text("SCAN QR CODE \(Image(systemName: "qrcode.viewfinder"))")
@@ -1429,12 +1322,9 @@ struct LogInMainView: View {
                             .frame(width: 200, height: 40)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                            .accessibility(identifier: "text_loginmainview_qrcode")
-
                     }
                 }
                 .trackRUMTapAction(name: "SCAN QR CODE")
-                .accessibility(identifier: "button_loginmainview_qrcode")
                 .uiKitFullPresent(isPresented: $isCodeScannerPresented, content: { closeHandler in
                     QRCodeScannerView(isCodeScannerPresented: $isCodeScannerPresented, qrScanCode: $qrScanCode, scanErrorString: $scanErrorString, isEnterpriseIdScan: true)
                         .environmentObject(modelData)
@@ -1445,7 +1335,6 @@ struct LogInMainView: View {
                     .foregroundColor(.white)
                     .padding(.bottom, -15)
                     .padding(.top, 10)
-                    .accessibility(identifier: "text_loginmainview_enter_manually")
 
                 TextField("", text: $enterpriseId)
                     .textFieldStyle(.roundedBorder)
@@ -1457,8 +1346,7 @@ struct LogInMainView: View {
                     .autocapitalization(.allCharacters)
                     .autocorrectionDisabled(true)
                     .submitLabel(.done)
-                    .accessibility(identifier: "textfield_loginmainview_enterprise")
-
+                
                 if scanErrorString.isEmpty == false {
                     Text(scanErrorString)
                         .font(.custom("Roboto-Regular", size: 14))
@@ -1484,8 +1372,6 @@ struct LogInMainView: View {
                             .onDisappear() {
                                 print("onAppear - self.modelData.networkAPIError")
                             }
-                            .accessibility(identifier: "text_loginmainview_error")
-
                     }
                     else {
                         Text("Unknown server API issue")
@@ -1498,8 +1384,6 @@ struct LogInMainView: View {
                                 showNetworkProgressView = false
                                 handlingNetworkAPI = false
                             }
-                            .accessibility(identifier: "text_loginmainview_unknown")
-
                     }
                 }
                 
@@ -1507,18 +1391,13 @@ struct LogInMainView: View {
                 
                 Button(action: {
                     if isValidEnterpriseCode(enterpriseId) {
-#if targetEnvironment(simulator) && QA_TESTING
-                        modelData.networkManager.modelData = modelData
-                        navigate(.push(.logInCheckEmailView))
-                        return
-#else
                         logger.info("EnterpriseId", attributes: ["valid" : "true", "enterpriseId" : enterpriseId])
                         self.showNetworkProgressView = true
+                        //modelData.onboardingEnterpriseSiteCode = enterpriseId
                         modelData.enterpriseSiteCode = enterpriseId
                         modelData.networkManager.modelData = modelData
                         modelData.networkManager.sendCode(email: modelData.userEmailAddress, enterpriseCode: modelData.enterpriseSiteCode)
                         self.modelData.userExists = 0
-#endif
                     }
                     else {
                         logger.info("EnterpriseId", attributes: ["valid" : "false", "enterpriseId" : enterpriseId])
@@ -1537,14 +1416,11 @@ struct LogInMainView: View {
                         .frame(width: 180, height: 50)
                         .foregroundColor(enterpriseId.isEmpty ? Color.gray : Color(hex: generalCHAppColors.onboardingLtBlueColor))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                        .accessibility(identifier: "text_loginmainview_submit")
-
                 }
                 .trackRUMTapAction(name: "SUBMIT-enterpriseId")
                 .disabled(enterpriseId.isEmpty ? true : false)
                 .padding(.bottom, 40)
-                .accessibility(identifier: "button_loginmainview_submit")
-
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)

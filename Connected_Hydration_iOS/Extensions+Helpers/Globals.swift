@@ -103,6 +103,9 @@ public var tabBarView: UIView?
 
 func updateIntakeTabState() {
     let items = tabBarItems
+    if items == nil {
+        return
+    }
     for item in items!
     {
         if (item.title ?? "").isEmpty {

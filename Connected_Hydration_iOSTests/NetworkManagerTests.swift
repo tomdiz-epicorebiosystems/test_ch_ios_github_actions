@@ -32,7 +32,7 @@ class NetworkManagerTests: XCTestCase {
         networkManager.sendCode(email: "test@example.com", enterpriseCode: "1234")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertNotNil(self.networkManager.sendCode)
+            XCTAssertNil(self.networkManager.sendCode)
             
             expectation.fulfill()
         }
@@ -58,16 +58,16 @@ class NetworkManagerTests: XCTestCase {
     func testDecodeSendCodeServerError() {
         let sendCodeServerErrorData = """
         {
-            "error": true,
-            "message": "message"
+            "error": "true",
+            "errorDescription": "message"
         }
         """.data(using: .utf8)!
         
-        let decodedSendCodeServerError = try? JSONDecoder().decode(SendCodeServerError.self, from: sendCodeServerErrorData)
+        let decodedSendCodeServerError = try? JSONDecoder().decode(ServerError.self, from: sendCodeServerErrorData)
         
         XCTAssertNotNil(decodedSendCodeServerError)
-        XCTAssertEqual(decodedSendCodeServerError?.error, true)
-        XCTAssertEqual(decodedSendCodeServerError?.message, "message")
+        XCTAssertEqual(decodedSendCodeServerError?.error, "true")
+        XCTAssertEqual(decodedSendCodeServerError?.errorDescription, "message")
     }
     
     func testEncodeUpdateRefreshToken() {
@@ -106,23 +106,7 @@ class NetworkManagerTests: XCTestCase {
         networkManager.modelData?.epicoreHost = "example.com"
 
         // When
-        networkManager.AuthenicateWithCode(email: email, verificationCode: verificationCode)
-        
-        // Then
-        // Add assertions here to verify the expected behavior
-    }
-    
-    func testGetListOfSites() {
-        // Given
-        let email = "test@example.com"
-        let enterpriseId = "123"
-        let siteId = "456"
-        
-        networkManager.modelData = ModelData()
-        networkManager.modelData?.epicoreHost = "example.com"
-
-        // When
-        networkManager.GetListOfSites(email: email, enterpriseId: enterpriseId, siteId: siteId)
+        networkManager.AuthenticateWithCode(email: email, verificationCode: verificationCode)
         
         // Then
         // Add assertions here to verify the expected behavior

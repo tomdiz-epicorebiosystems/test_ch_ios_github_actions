@@ -67,8 +67,7 @@ struct EditEnterpriseSiteIdView: View {
                             .foregroundColor(Color(hex: generalCHAppColors.settingsColorCoalText))
                             .padding(.leading, 40)
                             .font(.custom("Oswald-Regular", size: settingsInfoTextFontSize))
-                            .accessibility(identifier: "text_editenterprisesiteidview_enterprise")
-
+                        
                         Spacer()
                         
                         TextField("", text: $newEnterpriseCode)
@@ -82,8 +81,6 @@ struct EditEnterpriseSiteIdView: View {
                                 RoundedRectangle(cornerRadius: 7.0, style: .continuous)
                                     .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                             ).padding(.trailing, 80)
-                            .accessibility(identifier: "textfield_editenterprisesiteidview_enterprise")
-
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     
@@ -92,8 +89,7 @@ struct EditEnterpriseSiteIdView: View {
                             .foregroundColor(Color(hex: generalCHAppColors.settingsColorCoalText))
                             .padding(.leading, 40)
                             .font(.custom("Oswald-Regular", size: settingsInfoTextFontSize))
-                            .accessibility(identifier: "text_editenterprisesiteidview_site")
-
+                        
                         Spacer()
                         
                         TextField("", text: $newSiteIdCode)
@@ -107,8 +103,6 @@ struct EditEnterpriseSiteIdView: View {
                                 RoundedRectangle(cornerRadius: 7.0, style: .continuous)
                                     .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                             ).padding(.trailing, 80)
-                            .accessibility(identifier: "textfield_editenterprisesiteidview_site")
-
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     
@@ -126,8 +120,6 @@ struct EditEnterpriseSiteIdView: View {
                                     buttonTapOnce = false
                                     handlingNetworkAPI = false
                                 }
-                                .accessibility(identifier: "text_editenterprisesiteidview_invalid")
-
                         }
                         else {
                             Text("Unknown server API issue")
@@ -139,8 +131,6 @@ struct EditEnterpriseSiteIdView: View {
                                     buttonTapOnce = false
                                     handlingNetworkAPI = false
                                 }
-                                .accessibility(identifier: "text_editenterprisesiteidview_unknown")
-
                         }
                     }
                     
@@ -177,12 +167,9 @@ struct EditEnterpriseSiteIdView: View {
                                 .overlay(RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                                     .shadow(color: .gray, radius: 1, x: 0, y: 2))
-                                .accessibility(identifier: "text_editenterprisesiteidview_ok")
-
                         }
                         .trackRUMTapAction(name: "editenterprise-ok")
                         .disabled(buttonTapOnce)
-                        .accessibility(identifier: "button_editenterprisesiteidview_ok")
 
                         Spacer()
                         
@@ -198,15 +185,12 @@ struct EditEnterpriseSiteIdView: View {
                                 .overlay(RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                                     .shadow(color: .gray, radius: 1, x: 0, y: 2))
-                                .accessibility(identifier: "text_editenterprisesiteidview_cancel")
-
                         }
                         .trackRUMTapAction(name: "editenterprise-cancel")
                     }
                     .padding(.leading, 50)
                     .padding(.trailing, 50)
                     .padding(.bottom, 60)
-                    .accessibility(identifier: "button_editenterprisesiteidview_cancel")
 
                 }
                 .padding(.top, 50)
@@ -223,7 +207,6 @@ struct EditEnterpriseSiteIdView: View {
                     oldSiteIdCode = siteId
                     newSiteIdCode = siteId
                 }
-
                 if showNetworkProgressView == true {
                     NetworkProgressView()
                 }

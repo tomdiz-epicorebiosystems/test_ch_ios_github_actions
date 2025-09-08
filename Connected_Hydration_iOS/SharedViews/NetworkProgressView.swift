@@ -25,15 +25,13 @@ struct NetworkProgressView: View {
                                 isRotating = 360.0
                             }
                     }
-                    .accessibility(identifier: "image_networkprogressview_spinner")
-
+                
                 Text("VERIFYING...")
                     .font(.custom("Oswald-Regular", size: 24))
                     .padding(.top, 10)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .foregroundColor(Color(UIColor.white))
-                    .accessibility(identifier: "text_networkprogressview_verify")
-
+                
                 Spacer()
             }
             //.zIndex(0)

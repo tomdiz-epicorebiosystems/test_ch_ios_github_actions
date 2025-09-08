@@ -22,8 +22,6 @@ struct DataSharingSettingsView: View {
                 .background(Color(hex: generalCHAppColors.settingsHeaderBackgroundColor))
                 .foregroundColor(.white)
                 .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                .accessibility(identifier: "text_datasharingsettingsview_data_sharing")
-
         }
 
         Toggle("", isOn: $modelData.shareAnonymousDataEnterprise)
@@ -37,8 +35,7 @@ struct DataSharingSettingsView: View {
                                    thumbColor: Color(UIColor.white),
                                    isShowHeading: showHeading)
                 )
-            .accessibility(identifier: "toggle_datasharingsettingsview_anonymous")
-
+        
         if showHeading {
             Toggle("", isOn: $modelData.shareAnonymousDataEpicore)
                 .padding(.leading, 10)
@@ -49,16 +46,13 @@ struct DataSharingSettingsView: View {
                                        onColor: Color(hex: generalCHAppColors.settingsSliderOnColor),
                                        offColor: .gray,
                                        thumbColor: Color(UIColor.white)))
-                .accessibility(identifier: "toggle_datasharingsettingsview_epicore")
-
+            
             Text("Unchecking this will disable historical views, insights,\nand preparation & recovery suggestions")
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(Color(hex: generalCHAppColors.settingsColorCoalText))
                 .padding(.leading, 20)
                 .font(.custom("Roboto-Regular", size: settingsHeaderTextFontSize - 4))
-                .accessibility(identifier: "text_datasharingsettingsview_unchecking")
-
         }
     }
 }

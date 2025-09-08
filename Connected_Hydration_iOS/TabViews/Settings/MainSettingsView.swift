@@ -89,12 +89,9 @@ struct MainSettingsView: View {
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                         .shadow(color: .gray, radius: 1, x: 0, y: 2))
-                    .accessibility(identifier: "text_mainsettingsview_logout")
-
             }
             .trackRUMTapAction(name: "tap_log_out")
             .padding(.bottom, 20)
-            .accessibility(identifier: "button_mainsettingsview_logout")
 
         }
         .trackRUMView(name: "MainSettingsView")

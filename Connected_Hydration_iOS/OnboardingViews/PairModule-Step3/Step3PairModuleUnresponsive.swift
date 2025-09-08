@@ -32,12 +32,10 @@ struct Step3PairModuleUnresponsive: View {
                     .frame(width: (languageCode == "ja" ? 250 : 180), height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                    .accessibility(identifier: "text_step3pairmoduleunresponsive_tryagain")
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 10)
-            .accessibility(identifier: "button_step3pairmoduleunresponsive_tryagain")
-
+            
             Button(action: {
                 guard let number = URL(string: "tel://+1-617-397-3756") else { return }
                 if UIApplication.shared.canOpenURL(number) {
@@ -51,12 +49,9 @@ struct Step3PairModuleUnresponsive: View {
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .accessibility(identifier: "text_step3pairmoduleunresponsive_call")
-
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 20)
-            .accessibility(identifier: "button_step3pairmoduleunresponsive_call")
 
             Spacer()
         }
@@ -72,8 +67,7 @@ struct PairUnresponsiveTopView: View {
         Text("UNRESPONSIVE MODULE")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
-            .accessibility(identifier: "text_pairunresponsivetopview_unresponive")
-
+        
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -87,8 +81,6 @@ struct PairUnresponsiveTopView: View {
             .padding(.top, 10)
             .padding(.bottom, 10)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_pairunresponsivetopview_tested")
-
     }
 }
 
@@ -99,15 +91,11 @@ struct PairStepsView: View {
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_pairstepsview_step1")
-
             Text("App may be paired to the wrong module")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.trailing, 10)
-                .accessibility(identifier: "text_pairstepsview_app")
-
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom, 5)
@@ -119,7 +107,6 @@ struct PairStepsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_pairstepsview_pairing")
 
         Text("• If manually entering the serial number, double-check that you’re entering the correct number.")
             .font(.custom("Roboto-Regular", size: 16))
@@ -130,22 +117,17 @@ struct PairStepsView: View {
             .padding(.bottom, 10)
             .padding(.leading, 20)
             .padding(.trailing, 10)
-            .accessibility(identifier: "text_pairstepsview_manually")
 
         HStack(alignment: .top, spacing: 5) {
             Text("STEP 2:")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_pairstepsview_step2")
-
             Text("App may not be recognizing Bluetooth")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.trailing, 10)
-                .accessibility(identifier: "text_pairstepsview_recognize")
-
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom, 5)
@@ -168,22 +150,17 @@ struct PairStepsView: View {
             .padding(.bottom, 10)
             .padding(.leading, 20)
             .padding(.trailing, 10)
-            .accessibility(identifier: "text_pairstepsview_restart")
 
         HStack(alignment: .top, spacing: 5) {
             Text("STEP 3:")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
                 .padding(.leading, 20)
-                .accessibility(identifier: "text_pairstepsview_step3")
-
             Text("Depleted battery or damaged module")
                 .font(.custom("Roboto-Regular", size: 18))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.trailing, 10)
-                .accessibility(identifier: "text_pairstepsview_battery")
-
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.bottom, 5)
@@ -204,7 +181,5 @@ struct PairStepsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)
             .padding(.leading, 20)
-            .accessibility(identifier: "text_pairstepsview_unsuccessful")
-
     }
 }

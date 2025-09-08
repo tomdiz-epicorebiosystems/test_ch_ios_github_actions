@@ -17,7 +17,6 @@ struct Step4ArmBandApplicationStrapTighten: View {
             Text("MODULE ATTACHMENT: ARMBAND")
                 .font(.custom("Oswald-Regular", size: 20))
                 .foregroundColor(Color.white)
-                .accessibility(identifier: "text_step4armbandapplicationstraptighten_attach")
 
             Rectangle()
                 .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
@@ -27,7 +26,6 @@ struct Step4ArmBandApplicationStrapTighten: View {
             Image("Personalize - Dots 2")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, 10)
-                .accessibility(identifier: "image_step4armbandapplicationstraptighten_progress_2")
 
             ArmBandApplicationStrapSubView()
             
@@ -42,12 +40,8 @@ struct Step4ArmBandApplicationStrapTighten: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
-                    .accessibility(identifier: "text_step4armbandapplicationstraptighten_continue")
-
             }
             .padding(.bottom, 40)
-            .accessibility(identifier: "button_step4armbandapplicationstraptighten_continue")
-
         }
         .trackRUMView(name: "Step4ArmBandApplicationStrapTighten")
         .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)
@@ -66,13 +60,10 @@ struct ArmBandApplicationStrapSubView: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .fixedSize(horizontal: false, vertical: true)
-            .accessibility(identifier: "text_armbandapplicationstrapsubview_slide")
 
         Image("ArmBand Application - 2")
             .resizable()
             .scaledToFit()
             .padding(.top, 10)
-            .accessibility(identifier: "image_armbandapplicationstrapsubview_application")
-
     }
 }

@@ -75,8 +75,7 @@ struct PhysiologyInformationView: View {
                         .padding(.leading, 10)
                         .foregroundColor(.white)
                         .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                        .accessibility(identifier: "text_physiologyinformationview_title")
-
+                    
                     Spacer()
                     
                     Button(action: {
@@ -87,8 +86,6 @@ struct PhysiologyInformationView: View {
                             .padding(.trailing, 10)
                             .font(.custom("Oswald-Bold", size: settingsHeaderTextFontSize))
                             .foregroundColor(Color(hex: generalCHAppColors.settingsColorHydroDarkText))
-                            .accessibility(identifier: "text_physiologyinformationview_edit")
-
                     }
                 }
                 .trackRUMTapAction(name: "physiology-edit")
@@ -100,8 +97,6 @@ struct PhysiologyInformationView: View {
                 .background(Color(hex: generalCHAppColors.settingsHeaderBackgroundColor))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .accessibility(identifier: "button_physiologyinformationview_edit")
-
             }
             
             HStack {
@@ -111,7 +106,6 @@ struct PhysiologyInformationView: View {
                         .frame(width: 80, alignment: .leading)
                         .font(.custom("Roboto-Regular", size: settingsInfoTextFontSize))
                         .padding(.leading, 40)
-                        .accessibility(identifier: "text_physiologyinformationview_height")
                 }
                 else {
                     Text("Height:")
@@ -119,7 +113,6 @@ struct PhysiologyInformationView: View {
                         .frame(width: 80, alignment: .leading)
                         .font(.custom("Roboto-Regular", size: settingsInfoTextFontSize))
                         .padding(.leading, 40)
-                        .accessibility(identifier: "text_physiologyinformationview_height")
                 }
                 
                 if isEditing == false {
@@ -133,8 +126,6 @@ struct PhysiologyInformationView: View {
                                         .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                                 )
                                 .disabled(true)
-                                .accessibility(identifier: "text_physiologyinformationview_heightcm")
-
                         }
                         else {
                             Text(modelData.userPrefsData.getUserHeightInFt())
@@ -145,8 +136,6 @@ struct PhysiologyInformationView: View {
                                         .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                                 )
                                 .disabled(true)
-                                .accessibility(identifier: "text_physiologyinformationview_heightin")
-
                         }
                     }
                 }
@@ -188,8 +177,6 @@ struct PhysiologyInformationView: View {
                                     }.tint(.blue)
                                 }
                             }
-                            .accessibility(identifier: "textfield_physiologyinformationview_heightcm")
-
                     }
                     else {
                         Picker("", selection: $heightFt.onChange(unitsHeightFtChanged)) {
@@ -200,8 +187,6 @@ struct PhysiologyInformationView: View {
                         .accentColor(Color.gray)
                         .pickerStyle(.menu)
                         .padding(.leading, 10)
-                        .accessibility(identifier: "picker_physiologyinformationview_heightft")
-
                     }
                 }
                 
@@ -210,15 +195,11 @@ struct PhysiologyInformationView: View {
                         Text(modelData.userPrefsData.getUserHeightMajorUnitString())
                             .foregroundColor(Color(hex: generalCHAppColors.settingsColorCoalText))
                             .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                            .accessibility(identifier: "text_physiologyinformationview_heightmajor")
-
                     }
                     else {
                         Text(modelData.userPrefsData.getUserHeightMajorUnitString())
                             .foregroundColor(showHeader == false ? Color(UIColor.lightGray) : Color(hex: generalCHAppColors.settingsColorCoalText))
                             .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                            .accessibility(identifier: "text_physiologyinformationview_heightmajor")
-
                     }
                 }
                 
@@ -236,8 +217,6 @@ struct PhysiologyInformationView: View {
                                 )
                                 .disabled(true)
                                 .padding(.leading, 40)
-                                .accessibility(identifier: "text_physiologyinformationview_heightin")
-
                         }
                     }
                 }
@@ -252,8 +231,6 @@ struct PhysiologyInformationView: View {
                         }
                         .accentColor(Color.gray)
                         .pickerStyle(.menu)
-                        .accessibility(identifier: "picker_physiologyinformationview_heightin")
-
                     }
                 }
                 
@@ -263,8 +240,6 @@ struct PhysiologyInformationView: View {
                             Text(modelData.userPrefsData.getUserHeightMinorUnitString())
                                 .foregroundColor(Color(hex: generalCHAppColors.settingsColorCoalText))
                                 .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                                .accessibility(identifier: "text_physiologyinformationview_heightminor_imperial")
-
                         }
                     }
                     else {
@@ -272,8 +247,6 @@ struct PhysiologyInformationView: View {
                             Text(modelData.userPrefsData.getUserHeightMinorUnitString())
                                 .foregroundColor(showHeader == false ? Color(UIColor.lightGray) : Color(hex: generalCHAppColors.settingsColorCoalText))
                                 .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                                .accessibility(identifier: "text_physiologyinformationview_heightminor_metric")
-
                         }
                     }
                 }
@@ -288,8 +261,6 @@ struct PhysiologyInformationView: View {
                         .font(.custom("Roboto-Regular", size: settingsInfoTextFontSize))
                         .frame(width: 80, alignment: .leading)
                         .padding(.leading, 40)
-                        .accessibility(identifier: "text_physiologyinformationview_weight")
-
                 }
                 else {
                     Text("Weight:")
@@ -297,8 +268,6 @@ struct PhysiologyInformationView: View {
                         .font(.custom("Roboto-Regular", size: settingsInfoTextFontSize))
                         .frame(width: 80, alignment: .leading)
                         .padding(.leading, 40)
-                        .accessibility(identifier: "text_physiologyinformationview_weight")
-
                 }
 
                 if isEditing == false {
@@ -312,8 +281,6 @@ struct PhysiologyInformationView: View {
                                     .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                             )
                             .disabled(true)
-                            .accessibility(identifier: "text_physiologyinformationview_weight_value")
-
                     }
                 }
                 else {
@@ -352,9 +319,8 @@ struct PhysiologyInformationView: View {
                                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                                     }.tint(.blue)
                                 }
+                                
                             }
-                            .accessibility(identifier: "textfield_physiologyinformationview_weight")
-
                     }
                     else {
                         TextField("", text: $weight)
@@ -384,8 +350,6 @@ struct PhysiologyInformationView: View {
                             .foregroundColor(showHeader == false ? Color(UIColor.lightGray) : Color(hex: generalCHAppColors.settingsColorCoalText))
                             .padding(.leading, 5)
                             .keyboardType(.numberPad)
-                            .accessibility(identifier: "textfield_physiologyinformationview_weight")
-
                     }
                 }
                 
@@ -394,15 +358,11 @@ struct PhysiologyInformationView: View {
                         Text(modelData.userPrefsData.getUserWeightString())
                             .foregroundColor(Color(hex: generalCHAppColors.settingsColorCoalText))
                             .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                            .accessibility(identifier: "text_physiologyinformationview_weight_value")
-
                     }
                     else {
                         Text(modelData.userPrefsData.getUserWeightString())
                             .foregroundColor(showHeader == false ? Color(UIColor.lightGray) : Color(hex: generalCHAppColors.settingsColorCoalText))
                             .font(.custom("Oswald-Regular", size: settingsHeaderTextFontSize))
-                            .accessibility(identifier: "text_physiologyinformationview_weight_value")
-
                     }
                 }
             }
@@ -416,8 +376,6 @@ struct PhysiologyInformationView: View {
                         .font(.custom("Roboto-Regular", size: settingsInfoTextFontSize))
                         .frame(width: 80, alignment: .leading)
                         .padding(.leading, 40)
-                        .accessibility(identifier: "text_physiologyinformationview_sex")
-
                 }
                 else {
                     Text("Sex:")
@@ -426,8 +384,6 @@ struct PhysiologyInformationView: View {
                         .font(.custom("Roboto-Regular", size: settingsInfoTextFontSize))
                         .frame(width: 80, alignment: .leading)
                         .padding(.leading, 40)
-                        .accessibility(identifier: "text_physiologyinformationview_sex")
-
                 }
                 
                 if isEditing == false {
@@ -440,13 +396,10 @@ struct PhysiologyInformationView: View {
                                     .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                             )
                             .disabled(true)
-                            .accessibility(identifier: "textfield_physiologyinformationview_gender")
-
+                        
                         Text("Assigned at birth.")
                             .foregroundColor(showOKCancelOption == false ? Color.gray : Color(hex: generalCHAppColors.settingsColorCoalText))
                             .font(.custom("Roboto-Bold", size: 10))
-                            .accessibility(identifier: "text_physiologyinformationview_birth")
-
                     }
                     .padding(.top, 0)
                     .padding(.leading, languageCode == "ja" ? 0 : 0)
@@ -462,13 +415,10 @@ struct PhysiologyInformationView: View {
                         .accentColor(Color.gray)
                         .padding(.leading, 5)
                         .pickerStyle(.menu)
-                        .accessibility(identifier: "picker_physiologyinformationview_gender")
-
+                        
                         Text("Assigned at birth.")
                             .foregroundColor(showOKCancelOption == false ? Color.gray : Color(hex: generalCHAppColors.settingsColorCoalText))
                             .font(.custom("Roboto-Bold", size: 10))
-                            .accessibility(identifier: "text_physiologyinformationview_assigned")
-
                     }
                     .padding(.leading, languageCode == "ja" ? 10 : 5)
                 }
@@ -485,8 +435,6 @@ struct PhysiologyInformationView: View {
                 .padding(.trailing, 20)
                 .padding(.leading, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .accessibility(identifier: "picker_physiologyinformationview_metrics")
-
             }
             
                 
@@ -499,8 +447,6 @@ struct PhysiologyInformationView: View {
                     .padding(.bottom, 5)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_physiologyinformationview_height_values")
-
             }
 
             if showWeightOutOfBoundsAlert == true {
@@ -512,8 +458,6 @@ struct PhysiologyInformationView: View {
                     .padding(.bottom, 5)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                    .accessibility(identifier: "text_physiologyinformationview_weight_values")
-
             }
 
             if showOKCancelOption == true {
@@ -568,8 +512,6 @@ struct PhysiologyInformationView: View {
                             .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                                 .shadow(color: .gray, radius: 1, x: 0, y: 2))
-                            .accessibility(identifier: "text_physiologyinformationview_ok")
-
                     }
                     .alert(isPresented: $showPhysiologyConfirmAlert) {
                         Alert(
@@ -626,7 +568,6 @@ struct PhysiologyInformationView: View {
                             })
                         )
                     }
-                    .accessibility(identifier: "button_physiologyinformationview_ok")
 
                     Spacer()
                     
@@ -642,15 +583,12 @@ struct PhysiologyInformationView: View {
                             .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color(hex: generalCHAppColors.settingsColorHydroDarkText), lineWidth: 1)
                                 .shadow(color: .gray, radius: 1, x: 0, y: 2))
-                            .accessibility(identifier: "text_physiologyinformationview_cancel")
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.leading, 50)
                 .padding(.trailing, 50)
                 .padding(.bottom, 60)
-                .accessibility(identifier: "button_physiologyinformationview_cancel")
-
             }
         }
         .onAppear() {
