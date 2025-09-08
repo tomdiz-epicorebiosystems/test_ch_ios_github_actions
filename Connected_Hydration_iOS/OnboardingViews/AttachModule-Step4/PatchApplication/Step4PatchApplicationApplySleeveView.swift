@@ -31,8 +31,11 @@ struct Step4PatchApplicationApplySleeveView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step4patchapplicationapplysleeveview_continue")
+
             }
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step4patchapplicationapplysleeveview_ontinue")
 
         }
         .trackRUMView(name: "Step4PatchApplicationApplySleaveView")
@@ -51,6 +54,7 @@ struct PatchApplicationShareInfo4View: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.leading, 20)
             .padding(.trailing, 20)
+            .accessibility(identifier: "text_patchapplicationshareinfo4view_optional")
 
         Text("If your module comes with a cover, wrap it around your arm over the patch.")
             .font(.custom("Roboto-Regular", size: 18))
@@ -60,9 +64,12 @@ struct PatchApplicationShareInfo4View: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.bottom, 20)
+            .accessibility(identifier: "text_patchapplicationshareinfo4view_module")
 
         Image("PatchApplication - Sleave")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 20)
+            .accessibility(identifier: "image_patchapplicationshareinfo4view_sleave")
+
     }
 }

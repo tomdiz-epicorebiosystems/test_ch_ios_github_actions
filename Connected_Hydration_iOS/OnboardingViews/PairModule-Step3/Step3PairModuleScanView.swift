@@ -35,7 +35,8 @@ struct Step3PairModuleScanView: View {
                 Text("PAIR MODULE")
                     .font(.custom("Oswald-Regular", size: 20))
                     .foregroundColor(Color.white)
-                
+                    .accessibility(identifier: "text_step3pairmodulescanview_pair")
+
                 Rectangle()
                     .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
                     .frame(height: 1.0)
@@ -44,7 +45,8 @@ struct Step3PairModuleScanView: View {
                 Image("PairModule - Dots 2")
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 10)
-                
+                    .accessibility(identifier: "image_step3pairmodulescanview_progress_2")
+
                 Text("Locate the label on the back of your module and tap the button below to **scan** the QR code")
                     .font(.custom("Roboto-Regular", size: 20))
                     .foregroundColor(.white)
@@ -55,7 +57,8 @@ struct Step3PairModuleScanView: View {
                     .padding(.bottom, 30)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
-                
+                    .accessibility(identifier: "text_step3pairmodulescanview_locate")
+
                 PairModuleShareInfo2View()
                 
                 Spacer()
@@ -83,6 +86,8 @@ struct Step3PairModuleScanView: View {
                             .padding(.bottom, 5)
                             .padding(.leading, 20)
                             .padding(.trailing, 20)
+                            .accessibility(identifier: "text_step3pairmodulescanview_please")
+
                     }
                 }
 
@@ -95,6 +100,7 @@ struct Step3PairModuleScanView: View {
                             .frame(width: 350, height: 50)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmodulescanview_qrcode_jp")
                     }
                     else {
                         Text("SCAN QR CODE \(Image(systemName: "qrcode.viewfinder"))")
@@ -102,6 +108,7 @@ struct Step3PairModuleScanView: View {
                             .frame(width: 180, height: 50)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmodulescanview_qrcode")
                     }
                 }
                 .trackRUMTapAction(name: "qr-device")
@@ -110,7 +117,8 @@ struct Step3PairModuleScanView: View {
                     QRCodeScannerView(isCodeScannerPresented: $isCodeScannerPresented, qrScanCode: $qrScanCode, scanErrorString: $scanErrorString, isEnterpriseIdScan: false)
                         .environmentObject(modelData)
                 })
-                
+                .accessibility(identifier: "button_step3pairmodulescanview_qrcode")
+
                 Button(action: {
                     navigate(.push(.step3PairModuleManuallyView))
                 }) {
@@ -119,10 +127,13 @@ struct Step3PairModuleScanView: View {
                         .font(.custom("Roboto-Regular", size: 14))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                         .trackRUMTapAction(name: "manually-device")
+                        .accessibility(identifier: "text_step3pairmodulescanview_manually")
+
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 40)
-                
+                .accessibility(identifier: "button_step3pairmodulescanview_manually")
+
             }
             
             if isScanning {
@@ -139,13 +150,15 @@ struct Step3PairModuleScanView: View {
                                         isRotating = 360.0
                                     }
                             }
-                        
+                            .accessibility(identifier: "image_step3pairmodulescanview_spinner")
+
                         Text("PAIRING...")
                             .font(.custom("Oswald-Regular", size: 24))
                             .padding(.top, 10)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(Color(UIColor.white))
-                        
+                            .accessibility(identifier: "text_step3pairmodulescanview_pairing")
+
                         Spacer()
                     }
                 }
@@ -254,5 +267,6 @@ struct PairModuleShareInfo2View: View {
     var body: some View {
         Image("Pair Module - Scan")
             .frame(maxWidth: .infinity, alignment: .center)
+            .accessibility(identifier: "image_pairmoduleshareinfo2view_scan")
     }
 }

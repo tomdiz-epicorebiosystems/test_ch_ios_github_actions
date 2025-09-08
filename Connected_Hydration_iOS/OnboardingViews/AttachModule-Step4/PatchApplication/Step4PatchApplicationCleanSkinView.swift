@@ -31,7 +31,9 @@ struct Step4PatchApplicationCleanSkinView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step4patchapplicationcleanskinview_continue")
             }
+            .accessibility(identifier: "button_step4patchapplicationcleanskinview_continue")
 
             Spacer(minLength: 20)
             
@@ -55,10 +57,12 @@ struct PatchApplicationShareInfo2View: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
+            .accessibility(identifier: "text_patchapplicationshareinfo2view_clean")
 
         Image("PatchApplication - Clean 1")
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 20)
+            .accessibility(identifier: "image_patchapplicationshareinfo2view_clean_1")
 
         HStack {
             Text("Remove both top and bottom liners from device.")
@@ -67,9 +71,12 @@ struct PatchApplicationShareInfo2View: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(Color.white)
                 .padding(.leading, 20)
-            
+                .accessibility(identifier: "text_patchapplicationshareinfo2view_remove")
+
             Image("PatchApplication - Clean 2")
                 .padding(.trailing, 20)
+                .accessibility(identifier: "image_patchapplicationshareinfo2view_clean_2")
+
         }
         .frame(maxWidth: .infinity, alignment: .center)
         .padding(.top, -10)

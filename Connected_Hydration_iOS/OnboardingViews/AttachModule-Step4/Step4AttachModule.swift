@@ -20,7 +20,8 @@ struct Step4AttachModule: View {
             Text("MODULE ATTACHMENT")
                 .font(.custom("Oswald-Regular", size: 20))
                 .foregroundColor(Color.white)
-            
+                .accessibility(identifier: "text_step4attachmodule_attachment")
+
             Rectangle()
                 .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
                 .frame(height: 1.0)
@@ -34,6 +35,7 @@ struct Step4AttachModule: View {
             HStack(spacing: 5) {
                 Image("Nav Info Button")
                     .padding(.leading, 20)
+                    .accessibility(identifier: "image_step4attachmodule_info")
 
                 Text("Instructions will always be available later from the Info Menu of this app.")
                     .font(.custom("Roboto-Regular", size: 14))
@@ -41,6 +43,8 @@ struct Step4AttachModule: View {
                     .multilineTextAlignment(.leading)
                     .padding(.trailing, 20)
                     .fixedSize(horizontal: false, vertical: true)
+                    .accessibility(identifier: "text_step4attachmodule_instructions")
+
             }
             .padding(.bottom, 10)
 
@@ -58,8 +62,12 @@ struct Step4AttachModule: View {
                     .frame(width: languageCode == "ja" ? 230 : 210, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step4attachmodule_attached")
+
             }
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step4attachmodule_attached")
+
         }
         .trackRUMView(name: "Step4AttachModule")
         .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)
@@ -77,6 +85,7 @@ struct ModuleApplicationShareInfoView: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .fixedSize(horizontal: false, vertical: true)
+            .accessibility(identifier: "text_moduleapplicationshareinfoview_turnedon")
 
         Text("Accessory: Patch")
             .font(.custom("Oswald-Regular", size: 14))
@@ -84,12 +93,14 @@ struct ModuleApplicationShareInfoView: View {
             .multilineTextAlignment(.center)
             .padding(.top, 10)
             .padding(.bottom, 10)
+            .accessibility(identifier: "text_moduleapplicationshareinfoview_patch")
 
         Image("ArmBand Step 1-1")
             .resizable()
             .scaledToFit()
             .padding(.leading, 20)
             .padding(.trailing, 20)
+            .accessibility(identifier: "image_moduleapplicationshareinfoview_armband_1")
 
         Spacer()
 
@@ -99,11 +110,14 @@ struct ModuleApplicationShareInfoView: View {
             .multilineTextAlignment(.center)
             .padding(.top, 10)
             .padding(.bottom, 10)
+            .accessibility(identifier: "text_moduleapplicationshareinfoview_armband")
 
         Image("ArmBand Step 1-2")
             .resizable()
             .scaledToFit()
             .padding(.leading, 70)
             .padding(.trailing, 70)
+            .accessibility(identifier: "image_moduleapplicationshareinfoview_armband_2")
+
     }
 }

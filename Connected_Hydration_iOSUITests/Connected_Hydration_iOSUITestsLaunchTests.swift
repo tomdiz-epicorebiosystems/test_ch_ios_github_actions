@@ -8,7 +8,7 @@
 import XCTest
 
 final class Connected_Hydration_iOSUITestsLaunchTests: XCTestCase {
-/*
+
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }
@@ -29,5 +29,4 @@ final class Connected_Hydration_iOSUITestsLaunchTests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
     }
-*/
 }

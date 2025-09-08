@@ -31,7 +31,7 @@ class ModelDataTest: XCTestCase {
         XCTAssertEqual(modelData.auth0Url, "auth.ch.epicorebiosystems.com")
 
         XCTAssertEqual(modelData.bottles.count, 449)
-        XCTAssertEqual(modelData.bottle_list.count, 63)
+        XCTAssertEqual(modelData.bottle_list.count, 62)
         XCTAssertEqual(modelData.bottlePreviewIcons.count, 31)
 
         XCTAssertEqual(modelData.currentUserIntakeItems.count, 0)
@@ -93,7 +93,7 @@ class ModelDataTest: XCTestCase {
     
     func testGetTotalPresetBottles() {
         let result = modelData.getTotalPresetBottles()
-        XCTAssertEqual(result.count, 63)
+        XCTAssertEqual(result.count, 62)
     }
 
     func testAddIntakeBottle() {

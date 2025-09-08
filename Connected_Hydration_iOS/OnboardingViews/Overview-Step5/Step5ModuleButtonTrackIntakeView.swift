@@ -23,10 +23,14 @@ struct Step5ModuleButtonTrackIntakeView: View {
             if (modelData.isCHArmBandConnected) {
                 Image("Overview - CA - Module Intake")
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "image_step5modulebuttontrackintakeview_armband")
+
             }
             else {
                 Image("Overview - Module Intake")
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "image_step5modulebuttontrackintakeview_patch")
+
             }
 
             Spacer()
@@ -39,8 +43,11 @@ struct Step5ModuleButtonTrackIntakeView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step5modulebuttontrackintakeview_continue")
+
             }
             .padding(.bottom, 10)
+            .accessibility(identifier: "button_step5modulebuttontrackintakeview_continue")
 
             Button(action: {
                 modelData.isOnboardingComplete = true
@@ -51,10 +58,13 @@ struct Step5ModuleButtonTrackIntakeView: View {
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "text_step5modulebuttontrackintakeview_skip")
+
             }
-            .accessibility(identifier: "button_change_enterprise_site")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step5modulebuttontrackintakeview_skip")
+
         }
         .trackRUMView(name: "Step5ModuleButtonTrackIntakeView")
         .navigationBarTitleDisplayMode(.inline)
@@ -72,7 +82,8 @@ struct ModuleIntakeShareInfoView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 5)
-        
+            .accessibility(identifier: "text_moduleintakeshareinfoview_intake")
+
         Text("For **quick** tracking: push button on module to add one bottle when you drink.")
             .font(.custom("Oswald-Regular", size: 18))
             .foregroundColor(.white)
@@ -82,6 +93,7 @@ struct ModuleIntakeShareInfoView: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.bottom, 5)
+            .accessibility(identifier: "text_moduleintakeshareinfoview_tracking")
 
         Text("One bottle equals 500ml by default. Change this at any time in the Settings tab.")
             .font(.custom("Roboto-Regular", size: 14))
@@ -92,6 +104,7 @@ struct ModuleIntakeShareInfoView: View {
             .padding(.leading, 30)
             .padding(.trailing, 30)
             .padding(.bottom, 5)
+            .accessibility(identifier: "text_moduleintakeshareinfoview_bottle")
 
     }
 }

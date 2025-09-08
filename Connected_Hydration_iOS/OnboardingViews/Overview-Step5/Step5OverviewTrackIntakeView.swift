@@ -23,7 +23,8 @@ struct Step5OverviewTrackIntakeView: View {
             Image("Overview - Intake")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 20)
-            
+                .accessibility(identifier: "image_step5overviewtrackintakeview_intake")
+
             Spacer()
 
             Button(action: {
@@ -34,8 +35,11 @@ struct Step5OverviewTrackIntakeView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step5overviewtrackintakeview_continue")
+
             }
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step5overviewtrackintakeview_continue")
 
             Button(action: {
                 modelData.isOnboardingComplete = true
@@ -46,10 +50,12 @@ struct Step5OverviewTrackIntakeView: View {
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "text_step5overviewtrackintakeview_skip")
+
             }
-            .accessibility(identifier: "button_change_enterprise_site")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step5overviewtrackintakeview_skip")
 
         }
         .trackRUMView(name: "Step5OverviewTrackIntakeView")
@@ -68,7 +74,8 @@ struct OverviewShareInfo3View: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 5)
-        
+            .accessibility(identifier: "text_overviewshareinfo3view_track")
+
         Text("After you finish a drink, open the app and tap “Track Intake”. Select items from menu and save. This tracks the items’ sodium and water content.")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
@@ -78,5 +85,7 @@ struct OverviewShareInfo3View: View {
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .padding(.bottom, 5)
+            .accessibility(identifier: "text_overviewshareinfo3view_finish")
+
     }
 }

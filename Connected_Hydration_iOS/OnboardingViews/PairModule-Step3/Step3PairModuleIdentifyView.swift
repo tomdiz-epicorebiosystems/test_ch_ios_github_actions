@@ -34,15 +34,18 @@ struct Step3PairModuleIdentifyView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step3pairmoduleidentifyview_buzzme")
             }
             .trackRUMTapAction(name: "buzz_me")
             .padding(.bottom, 10)
+            .accessibility(identifier: "button_step3pairmoduleidentifyview_buzzme")
 
             Text("Was your module responsive?")
                 .font(.custom("Roboto-Regular", size: 18))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .foregroundColor(Color.white)
                 .padding(.bottom, 10)
+                .accessibility(identifier: "text_step3pairmoduleidentifyview_responsive")
 
             Spacer()
             
@@ -56,9 +59,11 @@ struct Step3PairModuleIdentifyView: View {
                         .frame(width: 70, height: 50)
                         .foregroundColor(self.isBuzzPressed ? Color(hex: generalCHAppColors.onboardingLtBlueColor) : Color.gray)
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                        .accessibility(identifier: "text_step3pairmoduleidentifyview_no")
                 }
                 .trackRUMTapAction(name: "buzz_me-no")
                 .disabled(self.isBuzzPressed ? false : true)
+                .accessibility(identifier: "button_step3pairmoduleidentifyview_no")
 
                 if modelData.onboardingStep == 6 {
                     Button(action: {
@@ -69,7 +74,10 @@ struct Step3PairModuleIdentifyView: View {
                             .frame(width: 70, height: 50)
                             .foregroundColor(self.isBuzzPressed ? Color(hex: generalCHAppColors.onboardingLtBlueColor) : Color.gray)
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmoduleidentifyview_yes")
                     }
+                    .accessibility(identifier: "button_step3pairmoduleidentifyview_yes")
+
                 }
                 else if modelData.onboardingStep == 7 {
                     Button(action: {
@@ -80,7 +88,10 @@ struct Step3PairModuleIdentifyView: View {
                             .frame(width: 70, height: 50)
                             .foregroundColor(self.isBuzzPressed ? Color(hex: generalCHAppColors.onboardingLtBlueColor) : Color.gray)
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmoduleidentifyview_yes")
                     }
+                    .accessibility(identifier: "button_step3pairmoduleidentifyview_yes")
+
                 }
                 else if modelData.onboardingStep == 8 {
                     Button(action: {
@@ -91,7 +102,10 @@ struct Step3PairModuleIdentifyView: View {
                             .frame(width: 70, height: 50)
                             .foregroundColor(self.isBuzzPressed ? Color(hex: generalCHAppColors.onboardingLtBlueColor) : Color.gray)
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmoduleidentifyview_yes")
                     }
+                    .accessibility(identifier: "button_step3pairmoduleidentifyview_yes")
+
                 }
                 else {
                     Button(action: {
@@ -103,9 +117,12 @@ struct Step3PairModuleIdentifyView: View {
                             .frame(width: 70, height: 50)
                             .foregroundColor(self.isBuzzPressed ? Color(hex: generalCHAppColors.onboardingLtBlueColor) : Color.gray)
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmoduleidentifyview_yes")
                     }
                     .trackRUMTapAction(name: "buzz_me-yes")
                     .disabled(self.isBuzzPressed ? false : true)
+                    .accessibility(identifier: "button_step3pairmoduleidentifyview_yes")
+
                 }
             }
             .padding(.bottom, 40)
@@ -146,7 +163,8 @@ struct PairIdentityTopView: View {
         Text("PAIR MODULE")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
-        
+            .accessibility(identifier: "text_pairidentitytopview_pairmodule")
+
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -155,6 +173,7 @@ struct PairIdentityTopView: View {
         Image("PairModule - Dots 4")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
+            .accessibility(identifier: "image_pairidentitytopview_progress_4")
 
         Text("Bluetooth connection established!")
             .font(.custom("Roboto-Regular", size: 20))
@@ -163,16 +182,21 @@ struct PairIdentityTopView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 10)
+            .accessibility(identifier: "text_pairidentitytopview_bluetooth")
 
         HStack(alignment: .center) {
             Image("Connex - device")
                 .padding(.top, 10)
+                .accessibility(identifier: "image_pairidentitytopview_device")
 
             Image("Connex - divider ok")
                 .padding(.top, 10)
+                .accessibility(identifier: "image_pairidentitytopview_ok")
 
             Image("Connex - phone icon")
                 .padding(.top, 10)
+                .accessibility(identifier: "image_pairidentitytopview_phone")
+
         }
         .padding(.bottom, 20)
 
@@ -184,5 +208,7 @@ struct PairIdentityTopView: View {
             .padding(.bottom, 10)
             .padding(.leading, 20)
             .padding(.trailing, 20)
+            .accessibility(identifier: "text_pairidentitytopview_confirm")
+
     }
 }

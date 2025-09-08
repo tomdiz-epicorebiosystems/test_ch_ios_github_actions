@@ -21,6 +21,7 @@ struct Step5OverviewMainView: View {
             HStack(spacing: 5) {
                 Image("Nav Info Button")
                     .padding(.leading, 20)
+                    .accessibility(identifier: "image_step5overviewmainview_info")
 
                 Text("Instructions will always be available later from the Info Menu of this app.")
                     .font(.custom("Roboto-Regular", size: 14))
@@ -28,6 +29,8 @@ struct Step5OverviewMainView: View {
                     .multilineTextAlignment(.leading)
                     .padding(.trailing, 20)
                     .fixedSize(horizontal: false, vertical: true)
+                    .accessibility(identifier: "text_step5overviewmainview_instructions")
+
             }
             .padding(.top, 20)
             .padding(.bottom, 10)
@@ -42,8 +45,11 @@ struct Step5OverviewMainView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step5overviewmainview_continue")
+
             }
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step5overviewmainview_continue")
 
             Button(action: {
                 modelData.isOnboardingComplete = true
@@ -53,10 +59,11 @@ struct Step5OverviewMainView: View {
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "text_step5overviewmainview_skip")
             }
-            .accessibility(identifier: "button_change_enterprise_site")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 20)
+            .accessibility(identifier: "button_step5overviewmainview_skip")
 
         }
         .trackRUMView(name: "Step5OverviewMain")
@@ -75,6 +82,7 @@ struct OverviewTopView: View {
         Text("OVERVIEW")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
+            .accessibility(identifier: "text_overviewtopview_overview")
 
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
@@ -84,6 +92,8 @@ struct OverviewTopView: View {
         Image("SignUpMain - Dots \(progressDots)")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
+            .accessibility(identifier: "image_overviewtopview_progress")
+
     }
 }
 
@@ -99,7 +109,8 @@ struct OverviewShareInfo1View: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 5)
-        
+            .accessibility(identifier: "text_overviewshareinfo1view_power")
+
         Text("To turn the module on, press the power button. A green light will flash every 10 sec. Device will pair automatically with your phone and start measuring.")
             .font(.custom("Roboto-Regular", size: 18))
             .foregroundColor(.white)
@@ -109,14 +120,19 @@ struct OverviewShareInfo1View: View {
             .padding(.bottom, 20)
             .padding(.leading, 20)
             .padding(.trailing, 20)
+            .accessibility(identifier: "text_overviewshareinfo1view_turnon")
 
         if (modelData.isCHArmBandConnected) {
             Image("Overview - CH - Top Button")
                 .frame(maxWidth: .infinity, alignment: .center)
+                .accessibility(identifier: "image_overviewshareinfo1view_patch")
+
         }
         else {
             Image("Overview - Top Button")
                 .frame(maxWidth: .infinity, alignment: .center)
+                .accessibility(identifier: "image_overviewshareinfo1view_band")
+
         }
 
     }

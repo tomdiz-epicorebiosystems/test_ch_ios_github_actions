@@ -34,7 +34,8 @@ struct Step3PairModuleManuallyView: View {
                         .scaledToFit()
                         .frame(width: geoMain.size.width)
                         .padding(.top, 10)
-                    
+                        .accessibility(identifier: "image_step3pairmodulemanuallyview_device")
+
                     Text("Locate the serial number on the back of your module and enter it below.")
                         .font(.custom("Roboto-Regular", size: 20))
                         .foregroundColor(.white)
@@ -45,6 +46,8 @@ struct Step3PairModuleManuallyView: View {
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .fixedSize(horizontal: false, vertical: true)
+                        .accessibility(identifier: "text_step3pairmodulemanuallyview_locate")
+
                 }
                 
                 Spacer()
@@ -53,7 +56,8 @@ struct Step3PairModuleManuallyView: View {
                     Text("Serial Number:")
                         .font(.custom("Roboto-Regular", size: 18))
                         .foregroundColor(.white)
-                    
+                        .accessibility(identifier: "text_step3pairmodulemanuallyview_sn")
+
                     TextField("", text: $deviceSN)
                         .textFieldStyle(.roundedBorder)
                         .font(.custom("Roboto-Bold", size: 20))
@@ -63,6 +67,8 @@ struct Step3PairModuleManuallyView: View {
                         .autocapitalization(.allCharacters)
                         .autocorrectionDisabled(true)
                         .submitLabel(.done)
+                        .accessibility(identifier: "textfield_step3pairmodulemanuallyview_devicesn")
+
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 20)
@@ -77,6 +83,7 @@ struct Step3PairModuleManuallyView: View {
                     .padding(.bottom, 10)
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
+                    .accessibility(identifier: "text_step3pairmodulemanuallyview_locate")
 
                 Spacer()
                 
@@ -103,6 +110,7 @@ struct Step3PairModuleManuallyView: View {
                             .frame(width: 180, height: 50)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "image_step3pairmodulemanuallyview_spinner")
                     }
                     else {
                         Text("SUBMIT")
@@ -110,10 +118,12 @@ struct Step3PairModuleManuallyView: View {
                             .frame(width: 180, height: 50)
                             .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                             .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                            .accessibility(identifier: "text_step3pairmodulemanuallyview_submit")
                     }
                 }
                 .padding(.bottom, 20)
-                
+                .accessibility(identifier: "button_step3pairmodulemanuallyview_submit")
+
                 Button(action: {
                     navigate(.push(.step3PairModuleScanView))
                 }) {
@@ -121,10 +131,12 @@ struct Step3PairModuleManuallyView: View {
                         .underline()
                         .font(.custom("Roboto-Regular", size: 14))
                         .foregroundColor(Color(hex: generalCHAppColors.linkStandardText))
+                        .accessibility(identifier: "text_step3pairmodulemanuallyview_scan")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 20)
-                
+                .accessibility(identifier: "button_step3pairmodulemanuallyview_scan")
+
             }
             .onAppear() {
                 if (notificationSensorPaired == nil) {
@@ -164,7 +176,11 @@ struct Step3PairModuleManuallyView: View {
         var deviceFound = false
         
         // Use specific test serial number to bypass pairing for App Store review since the reviewer doesn't have physical module to use for review.
-        if modelData.pairCHDeviceSN == "CHTEST00" {
+        let isArmBandTesting = modelData.pairCHDeviceSN == "CHTEST01"
+        if modelData.pairCHDeviceSN == "CHTEST00" || isArmBandTesting {
+            if (isArmBandTesting) {
+                modelData.firmwareRevText = "v6.1"
+            }
             deviceFound = true
             if navigateOnce == false {
                 navigateOnce = true
@@ -254,7 +270,8 @@ struct PairManuallyTopViews: View {
         Text("PAIR MODULE")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
-        
+            .accessibility(identifier: "text_pairmanuallytopviews_pairmodule")
+
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -263,5 +280,6 @@ struct PairManuallyTopViews: View {
         Image("PairModule - Dots 3")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
+            .accessibility(identifier: "image_pairmanuallytopviews_progress_3")
     }
 }

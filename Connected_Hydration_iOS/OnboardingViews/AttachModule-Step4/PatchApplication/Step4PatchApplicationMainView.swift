@@ -25,18 +25,23 @@ struct Step4PatchApplicationMainView: View {
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
                 .padding(.bottom, 20)
+                .accessibility(identifier: "text_step4patchapplicationmainview_careful")
 
             Image("PatchApplication - careful")
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.bottom, 20)
-            
+                .accessibility(identifier: "image_step4patchapplicationmainview_careful")
+
             HStack {
                 Image("PatchApplication - Info")
-                
+                    .accessibility(identifier: "image_step4patchapplicationmainview_info")
+
                 Text("Instructions will always be available later from the Info Menu of this app.")
                     .font(.custom("Roboto-Regular", size: 14))
                     .foregroundColor(Color.white)
                     .multilineTextAlignment(.leading)
+                    .accessibility(identifier: "text_step4patchapplicationmainview_instructions")
+
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.leading, 20)
@@ -52,9 +57,11 @@ struct Step4PatchApplicationMainView: View {
                     .frame(width: 180, height: 50)
                     .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                     .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                    .accessibility(identifier: "text_step4patchapplicationmainview_continue")
             }
             .padding(.bottom, 20)
-            
+            .accessibility(identifier: "button_step4patchapplicationmainview_continue")
+
         }
         .trackRUMView(name: "Step4PatchApplicationMain")
         .background(Color(hex: generalCHAppColors.onboardingVeryDarkBackground)
@@ -70,7 +77,8 @@ struct PatchApplicationTopView: View {
         Text("MODULE ATTACHMENT: PATCH")
             .font(.custom("Oswald-Regular", size: 20))
             .foregroundColor(Color.white)
-        
+            .accessibility(identifier: "text_patchapplicationtopview_patch")
+
         Rectangle()
             .fill(Color(hex: generalCHAppColors.onboardingLtGrayColor))
             .frame(height: 1.0)
@@ -79,5 +87,6 @@ struct PatchApplicationTopView: View {
         Image("PairModule - Dots \(progressDots)")
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
+            .accessibility(identifier: "image_patchapplicationtopview_dots")
     }
 }

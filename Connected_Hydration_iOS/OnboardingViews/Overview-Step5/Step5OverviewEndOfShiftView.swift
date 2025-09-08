@@ -29,8 +29,12 @@ struct Step5OverviewEndOfShiftView: View {
                         .frame(width: 180, height: 50)
                         .foregroundColor(Color(hex: generalCHAppColors.onboardingLtBlueColor))
                         .background(RoundedCorners(color: .white, tl: 10, tr: 10, bl: 10, br: 10))
+                        .accessibility(identifier: "text_step5overviewendOfshiftview_done")
+
                 }
                 .padding(.bottom, 10)
+                .accessibility(identifier: "button_step5overviewendOfshiftview_done")
+
             }
         }
         .trackRUMView(name: "Step5OverviewEndOfShiftView")
@@ -52,6 +56,7 @@ struct OverviewShareInfo4View: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 10)
             .padding(.bottom, 5)
+            .accessibility(identifier: "text_overviewshareinfo4view_eos")
 
         Text("Enter any unlogged intake for your shift.")
             .font(.custom("Roboto-Regular", size: 16))
@@ -59,6 +64,7 @@ struct OverviewShareInfo4View: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.horizontal, 20)
+            .accessibility(identifier: "text_overviewshareinfo4view_unlogged")
 
         HStack {
             Text("In the app, check that all data has synced.")
@@ -67,9 +73,12 @@ struct OverviewShareInfo4View: View {
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .fixedSize(horizontal: false, vertical: true)
+                .accessibility(identifier: "text_overviewshareinfo4view_synced")
 
             Image("Overview - Sync")
                 .frame(maxWidth: .infinity, alignment: .center)
+                .accessibility(identifier: "image_overviewshareinfo4view_synced")
+
         }
         .padding(.trailing, 20)
         .padding(.leading, 20)
@@ -78,10 +87,14 @@ struct OverviewShareInfo4View: View {
             if (modelData.isCHArmBandConnected) {
                 Image("Overview - CH - Top Button")
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "image_overviewshareinfo4view_armband")
+
             }
             else {
                 Image("Overview - Top Button")
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "image_overviewshareinfo4view_patch")
+
             }
 
             Text("Long-press power button. Module will flash orange and turn off.")
@@ -91,6 +104,8 @@ struct OverviewShareInfo4View: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.trailing, 20)
+                .accessibility(identifier: "text_overviewshareinfo4view_long")
+
         }
         .padding(.trailing, 20)
         .padding(.leading, 20)
@@ -104,9 +119,12 @@ struct OverviewShareInfo4View: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.trailing, 20)
+                    .accessibility(identifier: "text_overviewshareinfo4view_detach")
 
                 Image("Overview - CH - Peel")
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "image_overviewshareinfo4view_armband_remove")
+
             }
             .padding(.trailing, 20)
             .padding(.leading, 20)
@@ -120,9 +138,12 @@ struct OverviewShareInfo4View: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.trailing, 20)
+                    .accessibility(identifier: "text_overviewshareinfo4view_peel")
 
                 Image("Overview - Peel")
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .accessibility(identifier: "image_overviewshareinfo4view_patch_peel")
+
             }
             .padding(.trailing, 20)
             .padding(.leading, 20)
