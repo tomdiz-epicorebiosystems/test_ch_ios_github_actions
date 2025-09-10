@@ -48,6 +48,26 @@ jobs:
       - name: Upload file to Egnyte
         env:
           EGNYTE_API_KEY: ${{ secrets.EGNYTE_API_KEY }}
-          EGNYTE_DOMAIN: your-domain.egnyte.com  # Replace with your Egnyte domain
-          EGNYTE_DESTINATION_FOLDER: Shared/your-public-folder # Path to the public folder
-          SOURCE_FOLDER: dist # The local folder to upload
+          EGNYTE_DOMAIN: epicore.egnyte.com
+          EGNYTE_DESTINATION_FOLDER: Shared/Shared%20Files%20-%20PUBLIC/CH_Automated_Builds
+          SOURCE_FOLDER: Build/Products/Release-iphoneos # The local folder to upload
+
+        run: |
+          # Get a list of all files in the source folder
+          FILES=$(find "$SOURCE_FOLDER" -type f)
+
+          # Loop through each file and upload it
+          for FILE in $FILES; do
+            # Construct the Egnyte path
+            EGNYTE_FILE_PATH="$EGNYTE_DESTINATION_FOLDER/${FILE#$SOURCE_FOLDER/}"
+            
+            # URL-encode the file path
+            URL_ENCODED_PATH=$(echo "$EGNYTE_FILE_PATH" | sed 's/ /%20/g')
+
+            echo "Uploading $FILE to $EGNYTE_FILE_PATH"
+            curl -X POST \
+              "https://$EGNYTE_DOMAIN/pubapi/v1/fs-content/$URL_ENCODED_PATH" \
+              -H "Authorization: Bearer $EGNYTE_API_KEY" \
+              -H "Content-Type: application/octet-stream" \
+              --data-binary "@$FILE"
+          done
