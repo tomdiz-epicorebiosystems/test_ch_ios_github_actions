@@ -59,4 +59,4 @@ jobs:
         with:
           name: Connected_Hydration_iOS
           path: ${{ steps.find_app.outputs.app_path }}
-          retention-days: 7 # Optional: Set how long to keep the artifact
+          retention-days: 1 # Optional: Set how long to keep the artifact
