@@ -44,19 +44,3 @@ jobs:
       #    if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
       #    file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
       #    xcodebuild test-without-building -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-
-      - name: Locate the .app file
-        id: find_app
-        run: |
-          # Find the .app file in the DerivedData output. 
-          # The exact path can vary based on your project setup.
-          APP_PATH=$(find . -name "Connected_Hydration_iOS.app" | head -n 1)
-          echo "Found .app file at: $APP_PATH"
-          echo "app_path=$APP_PATH" >> $GITHUB_OUTPUT
-
-      - name: Upload .app as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Connected_Hydration_iOS
-          path: ${{ steps.find_app.outputs.app_path }}
-          retention-days: 7 # Optional: Set how long to keep the artifact
